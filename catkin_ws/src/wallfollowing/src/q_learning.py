@@ -4,6 +4,7 @@ import json
 import rospy
 
 from sensor_msgs.msg import LaserScan
+from geometry_msgs.msg import Twist
 
 class q_learning() :
     def __init__( self ) :
@@ -46,12 +47,12 @@ class q_learning() :
         #self.save_q_table_to_JSON( self.q_table , 'Manual_Q_table' )
 
 
-        #self.init_node()
-        #self.init_subscriber()
+        self.init_node()
+        self.init_subscriber()
+        self.demo( self.q_table )
 
-
-    def init_node(self) :
-        rospy.init_node( 'wall following' , anonymous=True )
+    def init_node( self ) :
+        rospy.init_node( 'wall_following' , anonymous=True )
 
 
     def init_subscriber(self) :
@@ -79,6 +80,9 @@ class q_learning() :
         '''
             Save q table to JSON format to be reloaded later
         '''
+        if filename in ['Manual_Q_table'] :
+            rospy.logerr(f'filename: {filename} is protect, save Q table to a different filename')
+            return None
         string_q_table = {}
         for key in q_table.keys() :
             str_key = ''
@@ -107,7 +111,8 @@ class q_learning() :
         '''
             Demos an agent in Gazebo/RviZ
         '''
-        pass
+        while rospy.is_shutdown() :
+            rospy.sleep(0)
 
 
     def construct_blank_q_table( self , q_table : dict, states : list , actions : list, default_value = 0 ) :
