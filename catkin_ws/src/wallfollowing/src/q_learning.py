@@ -2,7 +2,7 @@
 import itertools
 import json
 import math
-import sys
+import sys, getopt
 import rospy
 import numpy as np
 import os
@@ -56,7 +56,9 @@ class q_learning() :
                         num_epocs = 100,
                         headless = False, 
                         demo = True, 
-                        demo_rounds = 25 ) :
+                        demo_rounds = 25 ,
+                        plot_out_file = None, 
+                        SARSA = False ) :
 
 
         if num_epocs < 1 and train == True :
@@ -648,5 +650,103 @@ class q_learning() :
 
 
 
+
+
+
+
+
+def help() :
+    rospy.logwarn(f'\
+        -h <Headless mode ENABLED (DISABLED by default)> \n \
+        --train\t <flag to enable training> \n\
+        --demo\t <flag to demo a cycle> \n\
+        --SARSA\t <flag to enable SARSA learning strategy> \
+        --in_filename\t  <File to load q table from (just the name of the file not the path or extension)> \n\
+        --out_filename\t <File to save q table too (just the name of the file not the path or extension)>\n \
+        --plot_out_file\t <Filename to save training plots> \n\
+        --num_epocs\t <Number of epocs to run in training cycle> \n \
+        --demo_rounds\t <number of trails in demo>')
+    rospy.logwarn(f'\n EXAMPLE: \n \
+                \t rosrun wallfollowing q_learning.py --train --out_filename test_table_name --num_epocs=10\n \
+                \t rosrun wallfollowing q_learning.py --demo --in_filename best_Q_table --demo_rounds=10\n')
+    sys.exit(2)
+
+
+def main( argv ) :
+    out_filename = None 
+    in_filename = None
+    plot_out_file = None
+    train = False
+    num_epocs = 100
+    headless = False 
+    demo = False
+    demo_rounds = 25
+    SARSA = False
+
+
+    arguments = ["--in_filename","--out_filename", "--plot_out_file", "--num_epocs", "--demo_rounds", "--train", "--demo","--SARSA", "--help", '-h']
+
+    if len(argv) == 0 :
+        rospy.logwarn(f'ERROR: No arguments passed')
+        rospy.logwarn(f'arguments are {arguments}')
+        rospy.logwarn(f'EXAMPLE: \n \
+                      \t rosrun wallfollowing q_learning.py --train --out_filename test_table_name --num_epocs=10\n\n \
+                      \t rosrun wallfollowing q_learning.py --demo --in_filename best_Q_table --demo_rounds=10')
+        rospy.logwarn(f'\n for more information run, \n\n \
+                      \t rosrun wallfollowing q_learning.py --help')
+        return False
+
+    protected_files = ['best_Q_table', 'Manual_Q_table']
+
+    try :
+      opts, args = getopt.getopt(argv, "h",
+                                ["in_filename=","out_filename=", "plot_out_file=", "num_epocs=", "demo_rounds=", "train", "demo", "SARSA", "help"])
+    except getopt.GetoptError:
+        rospy.logerr(f'ERROR: when accepting command line arguments')
+        rospy.logerr(f'------- Running Help Command -----------')
+        help()
+        sys.exit(2)
+    for opt , arg in opts :
+        if opt == '-h' :
+            rospy.loginfo('Headless mode ENABLED')
+            headless = True
+        if opt == '--in_filename' :
+            in_filename = arg
+        if opt == '--out_filename' :
+            if arg in protected_files :
+                rospy.logerr(f'out_filename: {arg} is a PROTECTED file, cannot write be edited')
+                rospy.logerr(f'-----Aborting------')
+                sys.exit(2)
+            out_filename = arg
+        if opt == '--plot_out_file' :
+            if arg in protected_files :
+                rospy.logerr(f'out_filename: {arg} is a PROTECTED file, cannot write be edited')
+                rospy.logerr(f'-----Aborting------')
+                sys.exit(2)
+            plot_out_file = arg
+        if opt == '--num_epocs' :
+            if not arg.isnumeric() :
+                rospy.logerr(f' arg: num_epocs is {arg}, must be type integer numeric string ')
+                rospy.logerr(f' EXAMPLE : rosrun wallfollowing q_learning.py  --num_epocs 100 ')
+                sys.exit(2)
+            demo_rounds = arg
+        if opt == '--demo_rounds' :
+            if not arg.isnumeric() :
+                rospy.logerr(f' arg: demo_rounds is {arg}, must be type integer numeric string ')
+                rospy.logerr(f' EXAMPLE : rosrun wallfollowing q_learning.py  --demo_rounds 25 ')
+                sys.exit(2)
+            demo_rounds = arg
+        if opt == '--SARSA' :
+            SARSA = True
+        if opt == '--train' :
+            train = True
+        if opt == '--demo' :
+            demo = True
+        if opt == '--help' :
+            help()
+
+    q_learning(out_filename,in_filename,train,num_epocs,headless,demo,demo_rounds,plot_out_file, SARSA)
+
 if __name__ == '__main__':
-    q_learning(out_filename='Test_Q_table')
+    main(sys.argv[1:])
+    
