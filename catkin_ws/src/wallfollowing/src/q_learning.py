@@ -7,12 +7,14 @@ import rospy
 import numpy as np
 import os
 import random
+import rosgraph
 
 from std_srvs.srv import Empty
 from gazebo_msgs.msg import ModelState 
 from gazebo_msgs.srv import SetModelState
 from sensor_msgs.msg import LaserScan
 from geometry_msgs.msg import Twist
+
 
 '''
     TODO! Place description of states here before turn in
@@ -452,7 +454,6 @@ class q_learning() :
 
 
 
-
     def run_epoc( self , q_table = None , epsilon = 0 , limit = 150 ) :
         '''
             runs a single epoc in training
@@ -562,7 +563,6 @@ class q_learning() :
 
 
     
-
     def demo( self , q_table = None , limit = 25) :
         """Demo a q_table strategy in gazebo
             After the robot hits a wall, the simulation will
@@ -667,8 +667,8 @@ def help() :
         --num_epocs\t <Number of epocs to run in training cycle> \n \
         --demo_rounds\t <number of trails in demo>')
     rospy.logwarn(f'\n EXAMPLE: \n \
-                \t rosrun wallfollowing q_learning.py --train --out_filename test_table_name --num_epocs=10\n \
-                \t rosrun wallfollowing q_learning.py --demo --in_filename best_Q_table --demo_rounds=10\n')
+                \t $ rosrun wallfollowing q_learning.py --train --out_filename test_table_name --num_epocs=10\n \
+                \t $ rosrun wallfollowing q_learning.py --demo --in_filename best_Q_table --demo_rounds=10\n')
     sys.exit(2)
 
 
@@ -684,16 +684,29 @@ def main( argv ) :
     SARSA = False
 
 
+    ros_running = False
+    for _ in range(5) :
+        if not rosgraph.is_master_online(): # Checks the master uri and results boolean (True or False)
+            rospy.logerr(f'OS INCOMPATIBILITY ERROR: \t -ROS MASTER is OFFLINE-')
+        else : 
+            ros_running = True
+            break
+    if ros_running == False :
+        rospy.logwarn(f'\nDont forget to run the launch file.')
+        rospy.logwarn(f'\n\t$ roslaunch wallfollowing wallfollow.launch\n')
+        sys.exit(2)
+
+
     arguments = ["--in_filename","--out_filename", "--plot_out_file", "--num_epocs", "--demo_rounds", "--train", "--demo","--SARSA", "--help", '-h']
 
     if len(argv) == 0 :
         rospy.logwarn(f'ERROR: No arguments passed')
         rospy.logwarn(f'arguments are {arguments}')
         rospy.logwarn(f'EXAMPLE: \n \
-                      \t rosrun wallfollowing q_learning.py --train --out_filename test_table_name --num_epocs=10\n\n \
-                      \t rosrun wallfollowing q_learning.py --demo --in_filename best_Q_table --demo_rounds=10')
+                      \t $ rosrun wallfollowing q_learning.py --train --out_filename Test_Q_table --num_epocs=100\n\n \
+                      \t $ rosrun wallfollowing q_learning.py --demo --in_filename Test_Q_table --demo_rounds=50')
         rospy.logwarn(f'\n for more information run, \n\n \
-                      \t rosrun wallfollowing q_learning.py --help')
+                      \t $ rosrun wallfollowing q_learning.py --help')
         return False
 
     protected_files = ['best_Q_table', 'Manual_Q_table']
@@ -705,7 +718,6 @@ def main( argv ) :
         rospy.logerr(f'ERROR: when accepting command line arguments')
         rospy.logerr(f'------- Running Help Command -----------')
         help()
-        sys.exit(2)
     for opt , arg in opts :
         if opt == '-h' :
             rospy.loginfo('Headless mode ENABLED')
@@ -727,13 +739,13 @@ def main( argv ) :
         if opt == '--num_epocs' :
             if not arg.isnumeric() :
                 rospy.logerr(f' arg: num_epocs is {arg}, must be type integer numeric string ')
-                rospy.logerr(f' EXAMPLE : rosrun wallfollowing q_learning.py  --num_epocs 100 ')
+                rospy.logerr(f' EXAMPLE : $ rosrun wallfollowing q_learning.py  --num_epocs 100 ')
                 sys.exit(2)
             demo_rounds = arg
         if opt == '--demo_rounds' :
             if not arg.isnumeric() :
                 rospy.logerr(f' arg: demo_rounds is {arg}, must be type integer numeric string ')
-                rospy.logerr(f' EXAMPLE : rosrun wallfollowing q_learning.py  --demo_rounds 25 ')
+                rospy.logerr(f' EXAMPLE : $ rosrun wallfollowing q_learning.py  --demo_rounds 25 ')
                 sys.exit(2)
             demo_rounds = arg
         if opt == '--SARSA' :
