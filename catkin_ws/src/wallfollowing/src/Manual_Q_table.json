@@ -3,8 +3,8 @@
         "straight": 0,
         "slight left": 0,
         "slight right": 0,
-        "hard right": 1,
-        "hard left": 0
+        "hard right": 0,
+        "hard left": 1
     },
     "right : to close\tfront : to close\tleft : good\t": {
         "straight": 0,
@@ -29,17 +29,17 @@
     },
     "right : to close\tfront : good\tleft : good\t": {
         "straight": 0,
-        "slight left": 1,
+        "slight left": 0,
         "slight right": 0,
         "hard right": 0,
-        "hard left": 0
+        "hard left": 1
     },
     "right : to close\tfront : good\tleft : far\t": {
         "straight": 0,
-        "slight left": 1,
+        "slight left": 0,
         "slight right": 0,
         "hard right": 0,
-        "hard left": 0
+        "hard left": 1
     },
     "right : to close\tfront : medium\tleft : to close\t": {
         "straight": 1,
@@ -119,16 +119,16 @@
         "hard left": 0
     },
     "right : good\tfront : good\tleft : far\t": {
-        "straight": 1,
+        "straight": 0,
         "slight left": 0,
         "slight right": 0,
         "hard right": 0,
-        "hard left": 0
+        "hard left": 1
     },
     "right : good\tfront : medium\tleft : to close\t": {
-        "straight": 0,
+        "straight": 1,
         "slight left": 0,
-        "slight right": 1,
+        "slight right": 0,
         "hard right": 0,
         "hard left": 0
     },
@@ -140,16 +140,16 @@
         "hard left": 0
     },
     "right : good\tfront : medium\tleft : far\t": {
-        "straight": 0,
-        "slight left": 1,
+        "straight": 1,
+        "slight left": 0,
         "slight right": 0,
         "hard right": 0,
         "hard left": 0
     },
     "right : good\tfront : far\tleft : to close\t": {
-        "straight": 0,
+        "straight": 1,
         "slight left": 0,
-        "slight right": 1,
+        "slight right": 0,
         "hard right": 0,
         "hard left": 0
     },
@@ -178,8 +178,8 @@
         "straight": 0,
         "slight left": 0,
         "slight right": 0,
-        "hard right": 1,
-        "hard left": 0
+        "hard right": 0,
+        "hard left": 1
     },
     "right : medium\tfront : to close\tleft : far\t": {
         "straight": 0,
@@ -262,76 +262,76 @@
         "straight": 0,
         "slight left": 0,
         "slight right": 0,
-        "hard right": 1,
-        "hard left": 0
+        "hard right": 0,
+        "hard left": 1
     },
     "right : far\tfront : to close\tleft : far\t": {
         "straight": 0,
         "slight left": 0,
         "slight right": 0,
-        "hard right": 1,
-        "hard left": 0
+        "hard right": 0,
+        "hard left": 1
     },
     "right : far\tfront : good\tleft : to close\t": {
-        "straight": 0,
+        "straight": 1,
         "slight left": 0,
         "slight right": 0,
-        "hard right": 1,
+        "hard right": 0,
         "hard left": 0
     },
     "right : far\tfront : good\tleft : good\t": {
-        "straight": 0,
+        "straight": 1,
         "slight left": 0,
-        "slight right": 1,
+        "slight right": 0,
         "hard right": 0,
         "hard left": 0
     },
     "right : far\tfront : good\tleft : far\t": {
-        "straight": 0,
+        "straight": 1,
         "slight left": 0,
-        "slight right": 1,
+        "slight right": 0,
         "hard right": 0,
         "hard left": 0
     },
     "right : far\tfront : medium\tleft : to close\t": {
         "straight": 0,
         "slight left": 0,
-        "slight right": 0,
-        "hard right": 1,
+        "slight right": 1,
+        "hard right": 0,
         "hard left": 0
     },
     "right : far\tfront : medium\tleft : good\t": {
-        "straight": 0,
+        "straight": 1,
         "slight left": 0,
-        "slight right": 1,
+        "slight right": 0,
         "hard right": 0,
         "hard left": 0
     },
     "right : far\tfront : medium\tleft : far\t": {
-        "straight": 0,
+        "straight": 1,
         "slight left": 0,
-        "slight right": 1,
+        "slight right": 0,
         "hard right": 0,
         "hard left": 0
     },
     "right : far\tfront : far\tleft : to close\t": {
-        "straight": 0,
+        "straight": 1,
         "slight left": 0,
         "slight right": 0,
-        "hard right": 1,
+        "hard right": 0,
         "hard left": 0
     },
     "right : far\tfront : far\tleft : good\t": {
-        "straight": 0,
+        "straight": 1,
         "slight left": 0,
-        "slight right": 1,
+        "slight right": 0,
         "hard right": 0,
         "hard left": 0
     },
     "right : far\tfront : far\tleft : far\t": {
-        "straight": 0,
+        "straight": 1,
         "slight left": 0,
-        "slight right": 1,
+        "slight right": 0,
         "hard right": 0,
         "hard left": 0
     }
