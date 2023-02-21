@@ -1,24 +1,24 @@
 {
     "right : close\tfront : close\tleft : close\tright_diagonal : close\t": {
-        "linear: (fast) , angular: (straight)": -3.3932519891992197,
-        "linear: (fast) , angular: (slight left)": -79.09455310357222,
-        "linear: (fast) , angular: (slight right)": -76.6052578439562,
-        "linear: (fast) , angular: (hard right)": -41.952824965859534,
-        "linear: (fast) , angular: (hard left)": -44.905381853884144
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (slight right)": 0,
+        "linear: (fast) , angular: (hard right)": 0,
+        "linear: (fast) , angular: (hard left)": 0
     },
     "right : close\tfront : close\tleft : close\tright_diagonal : far\t": {
-        "linear: (fast) , angular: (straight)": -1.7201732469253155,
-        "linear: (fast) , angular: (slight left)": -0.0902135869297502,
-        "linear: (fast) , angular: (slight right)": -0.43293654117047303,
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (slight right)": 0,
         "linear: (fast) , angular: (hard right)": 0,
         "linear: (fast) , angular: (hard left)": 0
     },
     "right : close\tfront : close\tleft : far\tright_diagonal : close\t": {
-        "linear: (fast) , angular: (straight)": -33.90034102020434,
-        "linear: (fast) , angular: (slight left)": -37.434707339875786,
-        "linear: (fast) , angular: (slight right)": -14.998228486298789,
-        "linear: (fast) , angular: (hard right)": -6.410118791376662,
-        "linear: (fast) , angular: (hard left)": -17.31905185075715
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (slight right)": 0,
+        "linear: (fast) , angular: (hard right)": 0,
+        "linear: (fast) , angular: (hard left)": 0
     },
     "right : close\tfront : close\tleft : far\tright_diagonal : far\t": {
         "linear: (fast) , angular: (straight)": 0,
@@ -28,39 +28,39 @@
         "linear: (fast) , angular: (hard left)": 0
     },
     "right : close\tfront : far\tleft : close\tright_diagonal : close\t": {
-        "linear: (fast) , angular: (straight)": -1.4092156364666892,
-        "linear: (fast) , angular: (slight left)": -22.48810945217831,
-        "linear: (fast) , angular: (slight right)": -28.955212801051633,
-        "linear: (fast) , angular: (hard right)": -21.08808281601364,
-        "linear: (fast) , angular: (hard left)": -30.41646079750831
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (slight right)": 0,
+        "linear: (fast) , angular: (hard right)": 0,
+        "linear: (fast) , angular: (hard left)": 0
     },
     "right : close\tfront : far\tleft : close\tright_diagonal : far\t": {
-        "linear: (fast) , angular: (straight)": -1.6976203260203686,
-        "linear: (fast) , angular: (slight left)": -4.654489194366312,
-        "linear: (fast) , angular: (slight right)": -5.071972720144754,
-        "linear: (fast) , angular: (hard right)": -5.767704427898933,
-        "linear: (fast) , angular: (hard left)": -4.462913376201382
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (slight right)": 0,
+        "linear: (fast) , angular: (hard right)": 0,
+        "linear: (fast) , angular: (hard left)": 0
     },
     "right : close\tfront : far\tleft : far\tright_diagonal : close\t": {
-        "linear: (fast) , angular: (straight)": -12.162567161892824,
-        "linear: (fast) , angular: (slight left)": -7.8911972724236,
-        "linear: (fast) , angular: (slight right)": -16.821005814098736,
-        "linear: (fast) , angular: (hard right)": -0.9320734625047544,
-        "linear: (fast) , angular: (hard left)": -16.99110269697553
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (slight right)": 0,
+        "linear: (fast) , angular: (hard right)": 0,
+        "linear: (fast) , angular: (hard left)": 0
     },
     "right : close\tfront : far\tleft : far\tright_diagonal : far\t": {
-        "linear: (fast) , angular: (straight)": -9.16972421819139,
-        "linear: (fast) , angular: (slight left)": -4.453208644881885,
-        "linear: (fast) , angular: (slight right)": -6.302686418599248,
-        "linear: (fast) , angular: (hard right)": -7.282642854789701,
-        "linear: (fast) , angular: (hard left)": -0.8711736017118239
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (slight right)": 0,
+        "linear: (fast) , angular: (hard right)": 0,
+        "linear: (fast) , angular: (hard left)": 0
     },
     "right : tilted close\tfront : close\tleft : close\tright_diagonal : close\t": {
-        "linear: (fast) , angular: (straight)": -17.713776038040816,
-        "linear: (fast) , angular: (slight left)": -35.927831047683036,
-        "linear: (fast) , angular: (slight right)": -42.41137634925775,
-        "linear: (fast) , angular: (hard right)": -20.905031409310965,
-        "linear: (fast) , angular: (hard left)": -25.826243414911648
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (slight right)": 0,
+        "linear: (fast) , angular: (hard right)": 0,
+        "linear: (fast) , angular: (hard left)": 0
     },
     "right : tilted close\tfront : close\tleft : close\tright_diagonal : far\t": {
         "linear: (fast) , angular: (straight)": 0,
@@ -70,10 +70,10 @@
         "linear: (fast) , angular: (hard left)": 0
     },
     "right : tilted close\tfront : close\tleft : far\tright_diagonal : close\t": {
-        "linear: (fast) , angular: (straight)": -1.7789762310607562,
-        "linear: (fast) , angular: (slight left)": -0.20086510346635783,
-        "linear: (fast) , angular: (slight right)": -0.09330544960735399,
-        "linear: (fast) , angular: (hard right)": 1.3491381667435118,
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (slight right)": 0,
+        "linear: (fast) , angular: (hard right)": 0,
         "linear: (fast) , angular: (hard left)": 0
     },
     "right : tilted close\tfront : close\tleft : far\tright_diagonal : far\t": {
@@ -84,39 +84,39 @@
         "linear: (fast) , angular: (hard left)": 0
     },
     "right : tilted close\tfront : far\tleft : close\tright_diagonal : close\t": {
-        "linear: (fast) , angular: (straight)": 3.5278326597299774,
+        "linear: (fast) , angular: (straight)": 0,
         "linear: (fast) , angular: (slight left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
         "linear: (fast) , angular: (hard right)": 0,
         "linear: (fast) , angular: (hard left)": 0
     },
     "right : tilted close\tfront : far\tleft : close\tright_diagonal : far\t": {
-        "linear: (fast) , angular: (straight)": 4.479513940844352,
+        "linear: (fast) , angular: (straight)": 0,
         "linear: (fast) , angular: (slight left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
         "linear: (fast) , angular: (hard right)": 0,
         "linear: (fast) , angular: (hard left)": 0
     },
     "right : tilted close\tfront : far\tleft : far\tright_diagonal : close\t": {
-        "linear: (fast) , angular: (straight)": 2.0182848314872435,
-        "linear: (fast) , angular: (slight left)": -11.388073504052333,
-        "linear: (fast) , angular: (slight right)": -9.043150060942727,
-        "linear: (fast) , angular: (hard right)": -9.209150339147682,
-        "linear: (fast) , angular: (hard left)": 7.863440328554409
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (slight right)": 0,
+        "linear: (fast) , angular: (hard right)": 0,
+        "linear: (fast) , angular: (hard left)": 0
     },
     "right : tilted close\tfront : far\tleft : far\tright_diagonal : far\t": {
-        "linear: (fast) , angular: (straight)": -12.342602204000986,
-        "linear: (fast) , angular: (slight left)": 10.44520410047338,
-        "linear: (fast) , angular: (slight right)": 3.8310321792087234,
-        "linear: (fast) , angular: (hard right)": 4.76629755528247,
-        "linear: (fast) , angular: (hard left)": 1.9347207654403975
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (slight right)": 0,
+        "linear: (fast) , angular: (hard right)": 0,
+        "linear: (fast) , angular: (hard left)": 0
     },
     "right : good\tfront : close\tleft : close\tright_diagonal : close\t": {
-        "linear: (fast) , angular: (straight)": -33.74410082378358,
-        "linear: (fast) , angular: (slight left)": -28.671812507177638,
-        "linear: (fast) , angular: (slight right)": -13.204873249268651,
-        "linear: (fast) , angular: (hard right)": -22.29982925447237,
-        "linear: (fast) , angular: (hard left)": -22.393976697111256
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (slight right)": 0,
+        "linear: (fast) , angular: (hard right)": 0,
+        "linear: (fast) , angular: (hard left)": 0
     },
     "right : good\tfront : close\tleft : close\tright_diagonal : far\t": {
         "linear: (fast) , angular: (straight)": 0,
@@ -126,8 +126,8 @@
         "linear: (fast) , angular: (hard left)": 0
     },
     "right : good\tfront : close\tleft : far\tright_diagonal : close\t": {
-        "linear: (fast) , angular: (straight)": -0.4766998898904955,
-        "linear: (fast) , angular: (slight left)": -20.0,
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
         "linear: (fast) , angular: (hard right)": 0,
         "linear: (fast) , angular: (hard left)": 0
@@ -140,39 +140,39 @@
         "linear: (fast) , angular: (hard left)": 0
     },
     "right : good\tfront : far\tleft : close\tright_diagonal : close\t": {
-        "linear: (fast) , angular: (straight)": 7.898764044856417,
+        "linear: (fast) , angular: (straight)": 0,
         "linear: (fast) , angular: (slight left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
         "linear: (fast) , angular: (hard right)": 0,
         "linear: (fast) , angular: (hard left)": 0
     },
     "right : good\tfront : far\tleft : close\tright_diagonal : far\t": {
-        "linear: (fast) , angular: (straight)": 1.8664288065123926,
+        "linear: (fast) , angular: (straight)": 0,
         "linear: (fast) , angular: (slight left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
         "linear: (fast) , angular: (hard right)": 0,
         "linear: (fast) , angular: (hard left)": 0
     },
     "right : good\tfront : far\tleft : far\tright_diagonal : close\t": {
-        "linear: (fast) , angular: (straight)": -10.754207247153511,
-        "linear: (fast) , angular: (slight left)": -19.045405216895556,
-        "linear: (fast) , angular: (slight right)": -16.054751206996546,
-        "linear: (fast) , angular: (hard right)": -15.743568720653553,
-        "linear: (fast) , angular: (hard left)": -12.66608566918662
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (slight right)": 0,
+        "linear: (fast) , angular: (hard right)": 0,
+        "linear: (fast) , angular: (hard left)": 0
     },
     "right : good\tfront : far\tleft : far\tright_diagonal : far\t": {
-        "linear: (fast) , angular: (straight)": -13.241693397419573,
-        "linear: (fast) , angular: (slight left)": 1.4292007507052964,
-        "linear: (fast) , angular: (slight right)": 10.443474186156662,
-        "linear: (fast) , angular: (hard right)": 2.1919460957311605,
-        "linear: (fast) , angular: (hard left)": -9.04296390889726
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (slight right)": 0,
+        "linear: (fast) , angular: (hard right)": 0,
+        "linear: (fast) , angular: (hard left)": 0
     },
     "right : tilted far\tfront : close\tleft : close\tright_diagonal : close\t": {
-        "linear: (fast) , angular: (straight)": -18.142684642879324,
-        "linear: (fast) , angular: (slight left)": -20.6482789276829,
-        "linear: (fast) , angular: (slight right)": -29.38952535678958,
-        "linear: (fast) , angular: (hard right)": -0.22497572918106573,
-        "linear: (fast) , angular: (hard left)": -20.769221708019437
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (slight right)": 0,
+        "linear: (fast) , angular: (hard right)": 0,
+        "linear: (fast) , angular: (hard left)": 0
     },
     "right : tilted far\tfront : close\tleft : close\tright_diagonal : far\t": {
         "linear: (fast) , angular: (straight)": 0,
@@ -182,8 +182,8 @@
         "linear: (fast) , angular: (hard left)": 0
     },
     "right : tilted far\tfront : close\tleft : far\tright_diagonal : close\t": {
-        "linear: (fast) , angular: (straight)": 1.306191847845865,
-        "linear: (fast) , angular: (slight left)": 3.5729515548309756,
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
         "linear: (fast) , angular: (hard right)": 0,
         "linear: (fast) , angular: (hard left)": 0
@@ -196,10 +196,10 @@
         "linear: (fast) , angular: (hard left)": 0
     },
     "right : tilted far\tfront : far\tleft : close\tright_diagonal : close\t": {
-        "linear: (fast) , angular: (straight)": 12.864143241371028,
-        "linear: (fast) , angular: (slight left)": 4.15799616846032,
-        "linear: (fast) , angular: (slight right)": 2.8826825034211647,
-        "linear: (fast) , angular: (hard right)": 2.7566307550353994,
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (slight right)": 0,
+        "linear: (fast) , angular: (hard right)": 0,
         "linear: (fast) , angular: (hard left)": 0
     },
     "right : tilted far\tfront : far\tleft : close\tright_diagonal : far\t": {
@@ -210,73 +210,73 @@
         "linear: (fast) , angular: (hard left)": 0
     },
     "right : tilted far\tfront : far\tleft : far\tright_diagonal : close\t": {
-        "linear: (fast) , angular: (straight)": -19.273252196260703,
-        "linear: (fast) , angular: (slight left)": -18.490213206507853,
-        "linear: (fast) , angular: (slight right)": -15.644442159195412,
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (slight right)": 0,
         "linear: (fast) , angular: (hard right)": 0,
         "linear: (fast) , angular: (hard left)": 0
     },
     "right : tilted far\tfront : far\tleft : far\tright_diagonal : far\t": {
-        "linear: (fast) , angular: (straight)": -18.524886189431353,
-        "linear: (fast) , angular: (slight left)": -15.578595736300139,
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 2.9813402828447266,
+        "linear: (fast) , angular: (hard right)": 0,
         "linear: (fast) , angular: (hard left)": 0
     },
     "right : far\tfront : close\tleft : close\tright_diagonal : close\t": {
-        "linear: (fast) , angular: (straight)": -12.856768245085785,
-        "linear: (fast) , angular: (slight left)": -11.482457501263289,
-        "linear: (fast) , angular: (slight right)": 2.2764637648226036,
-        "linear: (fast) , angular: (hard right)": -11.451211974332603,
-        "linear: (fast) , angular: (hard left)": -20.91027604152827
-    },
-    "right : far\tfront : close\tleft : close\tright_diagonal : far\t": {
-        "linear: (fast) , angular: (straight)": -9.898640768532083,
-        "linear: (fast) , angular: (slight left)": -16.28098116954192,
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
         "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": -12.849567377115154
+        "linear: (fast) , angular: (hard left)": 0
+    },
+    "right : far\tfront : close\tleft : close\tright_diagonal : far\t": {
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (slight right)": 0,
+        "linear: (fast) , angular: (hard right)": 0,
+        "linear: (fast) , angular: (hard left)": 0
     },
     "right : far\tfront : close\tleft : far\tright_diagonal : close\t": {
-        "linear: (fast) , angular: (straight)": 0.05545779583644883,
-        "linear: (fast) , angular: (slight left)": 0.7766656424943764,
-        "linear: (fast) , angular: (slight right)": 2.9151897844089025,
-        "linear: (fast) , angular: (hard right)": 2.0497721063394385,
-        "linear: (fast) , angular: (hard left)": -15.287831924886559
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (slight right)": 0,
+        "linear: (fast) , angular: (hard right)": 0,
+        "linear: (fast) , angular: (hard left)": 0
     },
     "right : far\tfront : close\tleft : far\tright_diagonal : far\t": {
-        "linear: (fast) , angular: (straight)": 4.947687945551651,
-        "linear: (fast) , angular: (slight left)": 1.422007535621236,
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 1.227222519424603,
+        "linear: (fast) , angular: (hard right)": 0,
         "linear: (fast) , angular: (hard left)": 0
     },
     "right : far\tfront : far\tleft : close\tright_diagonal : close\t": {
-        "linear: (fast) , angular: (straight)": 4.830512728503277,
-        "linear: (fast) , angular: (slight left)": 7.699138108663492,
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
         "linear: (fast) , angular: (hard right)": 0,
         "linear: (fast) , angular: (hard left)": 0
     },
     "right : far\tfront : far\tleft : close\tright_diagonal : far\t": {
-        "linear: (fast) , angular: (straight)": -8.814250096770442,
+        "linear: (fast) , angular: (straight)": 0,
         "linear: (fast) , angular: (slight left)": 0,
-        "linear: (fast) , angular: (slight right)": -15.018669550755941,
-        "linear: (fast) , angular: (hard right)": 0.9148462469162489,
-        "linear: (fast) , angular: (hard left)": -8.343856980770319
+        "linear: (fast) , angular: (slight right)": 0,
+        "linear: (fast) , angular: (hard right)": 0,
+        "linear: (fast) , angular: (hard left)": 0
     },
     "right : far\tfront : far\tleft : far\tright_diagonal : close\t": {
-        "linear: (fast) , angular: (straight)": -8.8867390900292,
-        "linear: (fast) , angular: (slight left)": 0.6904621729492945,
-        "linear: (fast) , angular: (slight right)": 0.10760146769756895,
-        "linear: (fast) , angular: (hard right)": -10.806502326436807,
-        "linear: (fast) , angular: (hard left)": 0.4144723906558076
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (slight right)": 0,
+        "linear: (fast) , angular: (hard right)": 0,
+        "linear: (fast) , angular: (hard left)": 0
     },
     "right : far\tfront : far\tleft : far\tright_diagonal : far\t": {
-        "linear: (fast) , angular: (straight)": -16.04270355105203,
-        "linear: (fast) , angular: (slight left)": -8.636423425175904,
-        "linear: (fast) , angular: (slight right)": -20.797533915390932,
-        "linear: (fast) , angular: (hard right)": -8.722447546768112,
-        "linear: (fast) , angular: (hard left)": -11.388526661873993
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (slight right)": 0,
+        "linear: (fast) , angular: (hard right)": 0,
+        "linear: (fast) , angular: (hard left)": 0
     }
 }

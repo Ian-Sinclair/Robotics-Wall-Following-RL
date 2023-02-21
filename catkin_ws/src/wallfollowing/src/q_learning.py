@@ -80,7 +80,8 @@ class q_learning() :
                 'accumulated rewards' : [] ,
                 'total epocs' : None
             }
-        self.init_robot_control_params()
+
+        self.q_table = self.init_robot_control_params()
 
         self.init_node()
         self.init_subscriber()
@@ -91,22 +92,6 @@ class q_learning() :
 
         self.out_filename = out_filename
         self.in_filename = in_filename
-
-        #  Creates a blank Q table with all state/action pairs. And saves to file.
-        if in_filename == None :
-            self.q_table = {}
-
-            new_states = []
-            for direction , states in self.directional_states.items() :
-                mod_states = []
-                for s in states :
-                    mod_states += [ direction + ' : ' + s ]
-                new_states += [ mod_states ]
-
-            #new_states += [[str(c) for c in range(10)]]
-            new_states = [s for s in itertools.product(*new_states)]
-
-            self.q_table = self.construct_blank_q_table( {} , new_states , self.actions , default_value=0 )
 
         #  Loads Q table from file
         if type(in_filename) == type(' ') :
@@ -143,6 +128,11 @@ class q_learning() :
                  'velocity' : None ,
                  'incoming scan data' : None }
         
+        #  Desired distance from walls
+        d_w = 0.75
+
+        self.d_w = d_w
+
         #  Sensor ranges in degrees for which lidar sensors to use for each direction
         #  on the robot.
         self.scan_key = {
@@ -153,11 +143,11 @@ class q_learning() :
         }
 
         self.start_positions = [
-           # (-1.7,-1.7,0 ),
-           # (0,2,math.pi),
-            (2,1.3,math.pi/2),
-           # (1.7,-1.7,math.pi/2),
-           #  (0,0,0)
+            #(-1.7,-1.7,0 ),
+            (0,2,math.pi),
+            #(2,1.3,math.pi/2),
+            #(1.7,-1.7,math.pi/2),
+            #(0,0,0)
         ]
 
         #  List of linear speeds
@@ -182,7 +172,6 @@ class q_learning() :
             temp[f'linear: ({str(v)}) , angular: ({str(w)})'] = ( self.linear_actions[v] , self.rotational_actions[w] )
         
         self.actions = temp.copy()
-        #self.actions = { 'left' : (0.2 , -math.pi/4) , 'right' : (0.2 , math.pi/4) }
 
         '''
             A single state is defined by the status of 
@@ -190,25 +179,38 @@ class q_learning() :
         '''
         self.directional_states = {
             'right' : ['close' , 'tilted close' , 'good' , 'tilted far' , 'far'],
-            'front' : ['close' , 'far'],
+            'front' : ['close', 'medium' , 'far'],
             'left' : ['close' , 'far'],
             'right_diagonal' : ['close' , 'far']
         }
-
-        #  Desired distance from walls
-        d_w = 0.75
-
-        self.d_w = d_w
 
         fast_tr = 4*( self.linear_actions['fast'] / self.hard_turn_vel )  #  Fast turning radius
 
         #  Sets state thresholds to discretized scan distance data.
         self.thresholds = {
             'right' : {'close' : (0 , 0.8*d_w) , 'tilted close' : (0.8*d_w , 0.95*d_w) , 'good' : (0.95*d_w , 1.05*d_w), 'tilted far' : (1.05*d_w , 1.2*d_w) , 'far' : (1.2*d_w , 20)},
-            'front' : {'close' : (0 , d_w) , 'far' : (d_w , 20)},
+            'front' : {'close' : (0 , 0.4) , 'medium' : ( 0.4 , d_w ) , 'far' : (d_w , 20)},
             'left' : {'close' : (0 , 1.2*fast_tr) , 'far' : ( 1.2*fast_tr , 20)},
             'right_diagonal' : { 'close' : (0 , 2*d_w) , 'far' : (2*d_w , 20) }
         }
+
+
+
+                #  Creates a blank Q table with all state/action pairs. And saves to file.
+        if self.in_filename == None :
+            self.q_table = {}
+
+            new_states = []
+            for direction , states in self.directional_states.items() :
+                mod_states = []
+                for s in states :
+                    mod_states += [ direction + ' : ' + s ]
+                new_states += [ mod_states ]
+
+            new_states = [s for s in itertools.product(*new_states)]
+
+            return self.construct_blank_q_table( {} , new_states , self.actions , default_value=0 )
+        return None
 
 
     def init_node( self ) :
@@ -401,54 +403,36 @@ class q_learning() :
         return min(state_range)
 
 
-    def get_reward( self , state , scanArray , previous_scanArray ) :
+    def get_reward( self , state , scanArray ) :
         if self.is_blocked(scanArray) : return -10
-
-        '''
-        if 'good' in state[0] :
-            return 0
-
-        if 'tilted' in state[0] :
-            return -1
-        return -2
-        '''
-        xp = self.get_distance(previous_scanArray , 'right')
-        #yp = self.get_distance(previous_scanArray , 'front')
 
         x = self.get_distance(scanArray , 'right')
         y = self.get_distance(scanArray , 'front')
 
-        '''
-        f_x = 0
-
-        if y < 0.5 : return -5
-
-        if ((x-self.d_w)**2)**0.5 < 0.1 : return 1
-
-        if abs(xp-self.d_w) < abs(x-self.d_w)-0.05 :
-            return 0
-
-        return -1
-        '''
-        ''''''
-        #if y < 0.4 : return -5
-
-        #if ((x-self.d_w)**2)**0.5 > 0.5 : return -2
-
-        #if ((x-self.d_w)**2)**0.5 < 0.1 : return 1
         if x < 0.2 : x = 0.2
         if y < 0.2 : y = 0.2
         #f_x = -5*((x-self.d_w)**2)
         f_x = 5*math.cos(1.2*(x-self.d_w))-math.exp(-5*(x-0.7))-1
         #f_x = -5*abs(x-self.d_w)
-        f_y = -(1/(y**1.3))+1.2
+        f_y = -(1/(x*1.3))+1.2
 
         #print(f'x={x}\t y={y} \t f_x={f_x} \t f_y={f_y} \tz={f_x+f_y}')
         return f_x + f_y
 
 
-    def update_Q_table( self, q_table , state , reward , action , new_state , gamma = 0.8, alpha = 0.2 ) :
-        sample = reward + gamma*max(q_table[new_state].values())
+    def update_Q_table( self, q_table , state , reward , action , new_state , gamma = 0.8, alpha = 0.2, strategy = 'Temporal Difference', new_action = None ) :
+        if strategy == 'Temporal Difference' :
+            sample = reward + gamma*max(q_table[new_state].values())
+        if strategy == 'SARSA' :
+            if new_action != None :
+                sample = reward + gamma*q_table[new_state][new_action]
+            else :
+                rospy.logwarn(f'CANNOT Update SARSA Q table: new action is {new_action}')
+        else : 
+            rospy.logerr(f'ERROR updating Q table: unknown strategy, {strategy}, ---ABORTING---')
+            sys.exit(2)
+
+
         q_table[state][action] = (1-alpha) * q_table[state][action] + alpha * sample
         return q_table
 
@@ -463,33 +447,131 @@ class q_learning() :
         self.cache['incoming scan data'] = None
         
         epoc = 0
-        epsilon = 0.2
+        epsilon = 0.8
         temp = epsilon
 
         if self.plot_out_file != None :
             self.record_info['total epocs'] = num_epocs
 
         while epoc < num_epocs and not rospy.is_shutdown() :
+            rospy.sleep(0)
             rospy.loginfo(f'\t\t\t\t Running epoc {epoc+1}/{num_epocs}')
             epoc += 1
-            epsilon = temp*(1-epoc/num_epocs)
+            epsilon = temp*(1-epoc/num_epocs)+0.1
             rospy.loginfo(f'-------- Epsilon:  {epsilon}  ----------')
                 
-            q_table, accum_reward = self.run_epoc( q_table , epsilon )
+            q_table, accum_reward = self.run_epoc( q_table , epsilon , strategy = strategy )
             
             if self.out_filename != None :
                 self.save_q_table_to_JSON( q_table , self.out_filename )
                 q_table = self.load_q_table_from_JSON( self.out_filename )
-            rospy.sleep(0)
+            
             if self.plot_out_file != None :
-                self.record_info['accumulated rewards'] += [accum_reward]
-                self.plot(self.record_info ,self.plot_out_file)
+                self.record_info['accumulated rewards'] += [ accum_reward ]
+                self.plot( self.record_info , self.plot_out_file )
         rospy.loginfo(f'-------Training Complete-------')
         self.reset_world()
         return q_table
 
 
-    def run_epoc( self , q_table = None , epsilon = 0 , limit = 150 ) :
+
+    def run_epoc( self , q_table = None , epsilon = 0 , limit = 150 , strategy = 'Temporal Difference') :
+        while self.cache['scan data'] == None and not rospy.is_shutdown() :
+            rospy.loginfo(f'-----Waiting for scan data-------')
+            rospy.sleep(1)
+        if q_table == None :
+            rospy.logwarn('Q table argument not specified in training cycle: --grabbing class Q table.')
+            q_table = self.q_table
+        
+
+        self.reset_world()
+        x,y,theta = self.start_positions[np.random.choice(range(len(self.start_positions)))]
+        nx,ny,nz,w = tuple(quaternion_from_euler(0,0,theta))
+        self.set_model_pos(x,y,nx=nx,ny=ny,nz=nz,w=w)
+
+
+        self.cache['incoming scan data'] = None
+        wait_counter = 0
+        while self.cache['incoming scan data'] == None and not rospy.is_shutdown() :
+            wait_counter += 1
+            if wait_counter > 5 :
+                rospy.loginfo(f'-----Waiting for scan data-------')
+            rospy.sleep(1)
+
+
+
+        rospy.loginfo(f'----- Initializing Simulation ------')
+    
+        lag_random_action = False
+        
+        count = 0
+        accum_reward = 0
+        repeat_limit = 75
+        repeat_states = 0
+        history = []
+
+        while not rospy.is_shutdown() and count < limit and repeat_states < repeat_limit :
+            state = self.scan_to_state(self.cache['scan data'].ranges)
+
+            repeat_states += 1
+
+            flag_random_action = False
+            action = max( q_table[state], key = q_table[state].get )
+            action = np.random.choice( [action , 'random'] , p=[ 1-epsilon , epsilon ] )
+            if action == 'random' : 
+                flag_random_action = True
+                action = np.random.choice(list(self.actions.keys()))
+
+            history += ( state , action , self.cache['scan data'].ranges )
+
+            #  Converts Q table action to linear and angular velocities
+            x , nz = self.actions[ action ]
+
+            self.publish_velocity( x = x , nz = nz )
+
+            #  wait for result..... maybe pause physics
+            rospy.sleep(0.5)
+
+            self.cache['incoming scan data'] = None
+            wait_counter = 0
+            while self.cache['incoming scan data'] == None and not rospy.is_shutdown() :
+                wait_counter += 1
+                if wait_counter > 20 :
+                    rospy.loginfo(f'-----Waiting for scan data-------')
+                rospy.sleep(0.1)
+            
+            new_state = self.scan_to_state( self.cache['scan data'].ranges )
+
+            reward = self.get_reward( new_state , self.cache['scan data'].ranges )
+
+            q_table = self.update_Q_table( q_table , state , reward , self.cache[ 'action' ] , new_state , strategy=strategy )
+
+            if flag_random_action == False :
+                accum_reward += reward
+
+            count += 1
+            if state != new_state : 
+                count = 0
+
+
+            if repeat_states > 0.9*repeat_limit  :
+                rospy.loginfo(f'TIMEOUT')
+                q_table = self.update_Q_table(q_table , self.cache['state'] , -100 , self.cache['action'] , self.cache['state'])
+                break
+
+            if self.is_blocked(self.cache['scan data'].ranges) :
+                #  update with crash reward....
+                self.publish_velocity( x = 0 , nz = 0 )
+                rospy.sleep(0.2)
+                break
+        
+        return q_table , accum_reward
+
+
+
+
+
+    def depreciated_run_epoc( self , q_table = None , epsilon = 0 , limit = 150 ) :
         '''
             runs a single epoc in training
         '''
@@ -541,11 +623,10 @@ class q_learning() :
         #  Publishes linear and angular velocities as Twist object 
         self.publish_velocity( x = x , nz = nz )
 
-        repeat_limit = 1000
+        repeat_limit = 75
         repeat_states = 0
-        #rewards = 0
         while not rospy.is_shutdown() and count < limit and repeat_states < repeat_limit :
-            rospy.sleep(0.1)
+            rospy.sleep(0.5)
 
             #  Discretized scan data to Q table state information
             new_state = self.scan_to_state(self.cache['scan data'].ranges)
