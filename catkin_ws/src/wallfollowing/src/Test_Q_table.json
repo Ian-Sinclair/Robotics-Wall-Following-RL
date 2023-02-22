@@ -1,282 +1,542 @@
 {
     "right : close\tfront : close\tleft : close\tright_diagonal : close\t": {
-        "linear: (fast) , angular: (straight)": 0,
-        "linear: (fast) , angular: (slight left)": 0,
-        "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": 0
+        "linear: (fast) , angular: (straight)": -1.6172665856,
+        "linear: (fast) , angular: (slight left)": -1.5043774464000004,
+        "linear: (fast) , angular: (turn left)": -1.4242560000000002,
+        "linear: (fast) , angular: (hard left)": -1.531776,
+        "linear: (fast) , angular: (slight right)": -1.2960000000000003,
+        "linear: (fast) , angular: (turn right)": -1.2000000000000002,
+        "linear: (fast) , angular: (hard right)": -1.4291200000000004
     },
     "right : close\tfront : close\tleft : close\tright_diagonal : far\t": {
         "linear: (fast) , angular: (straight)": 0,
         "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": 0
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
     },
     "right : close\tfront : close\tleft : far\tright_diagonal : close\t": {
-        "linear: (fast) , angular: (straight)": 0,
-        "linear: (fast) , angular: (slight left)": 0,
-        "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": 0
+        "linear: (fast) , angular: (straight)": -0.8419200000000001,
+        "linear: (fast) , angular: (slight left)": -0.48800000000000004,
+        "linear: (fast) , angular: (turn left)": -0.9805058867200002,
+        "linear: (fast) , angular: (hard left)": -0.7942400000000001,
+        "linear: (fast) , angular: (slight right)": -0.9425746124800003,
+        "linear: (fast) , angular: (turn right)": -0.6880000000000001,
+        "linear: (fast) , angular: (hard right)": -0.2
     },
     "right : close\tfront : close\tleft : far\tright_diagonal : far\t": {
         "linear: (fast) , angular: (straight)": 0,
         "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": 0
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
     },
-    "right : close\tfront : far\tleft : close\tright_diagonal : close\t": {
+    "right : close\tfront : medium\tleft : close\tright_diagonal : close\t": {
+        "linear: (fast) , angular: (straight)": -0.6896000000000001,
+        "linear: (fast) , angular: (slight left)": -0.56,
+        "linear: (fast) , angular: (turn left)": -1.0323200000000001,
+        "linear: (fast) , angular: (hard left)": -0.8313600000000001,
+        "linear: (fast) , angular: (slight right)": -0.6880000000000001,
+        "linear: (fast) , angular: (turn right)": -0.2,
+        "linear: (fast) , angular: (hard right)": -0.8661646837678081
+    },
+    "right : close\tfront : medium\tleft : close\tright_diagonal : far\t": {
         "linear: (fast) , angular: (straight)": 0,
         "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": 0
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
+    },
+    "right : close\tfront : medium\tleft : far\tright_diagonal : close\t": {
+        "linear: (fast) , angular: (straight)": -2.5604511251022375,
+        "linear: (fast) , angular: (slight left)": -2.1423076925440006,
+        "linear: (fast) , angular: (turn left)": -1.9131196973280928,
+        "linear: (fast) , angular: (hard left)": -2.198915092807681,
+        "linear: (fast) , angular: (slight right)": -2.1796899846553606,
+        "linear: (fast) , angular: (turn right)": -2.2361091399680006,
+        "linear: (fast) , angular: (hard right)": -2.146978374252024
+    },
+    "right : close\tfront : medium\tleft : far\tright_diagonal : far\t": {
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
+        "linear: (fast) , angular: (slight right)": 0,
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
+    },
+    "right : close\tfront : far\tleft : close\tright_diagonal : close\t": {
+        "linear: (fast) , angular: (straight)": -0.48800000000000004,
+        "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
+        "linear: (fast) , angular: (slight right)": 0,
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
     },
     "right : close\tfront : far\tleft : close\tright_diagonal : far\t": {
         "linear: (fast) , angular: (straight)": 0,
         "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": 0
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
     },
     "right : close\tfront : far\tleft : far\tright_diagonal : close\t": {
-        "linear: (fast) , angular: (straight)": 0,
-        "linear: (fast) , angular: (slight left)": 0,
-        "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": 0
+        "linear: (fast) , angular: (straight)": -0.7030400000000001,
+        "linear: (fast) , angular: (slight left)": -0.36000000000000004,
+        "linear: (fast) , angular: (turn left)": -0.36000000000000004,
+        "linear: (fast) , angular: (hard left)": -1.0277567394656186,
+        "linear: (fast) , angular: (slight right)": -0.4,
+        "linear: (fast) , angular: (turn right)": -0.8373586124800003,
+        "linear: (fast) , angular: (hard right)": -0.36000000000000004
     },
     "right : close\tfront : far\tleft : far\tright_diagonal : far\t": {
         "linear: (fast) , angular: (straight)": 0,
         "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": 0
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
     },
     "right : tilted close\tfront : close\tleft : close\tright_diagonal : close\t": {
-        "linear: (fast) , angular: (straight)": 0,
-        "linear: (fast) , angular: (slight left)": 0,
-        "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": 0
+        "linear: (fast) , angular: (straight)": -0.36000000000000004,
+        "linear: (fast) , angular: (slight left)": -0.2,
+        "linear: (fast) , angular: (turn left)": -0.2,
+        "linear: (fast) , angular: (hard left)": -0.32000000000000006,
+        "linear: (fast) , angular: (slight right)": -0.2,
+        "linear: (fast) , angular: (turn right)": -0.2,
+        "linear: (fast) , angular: (hard right)": 0
     },
     "right : tilted close\tfront : close\tleft : close\tright_diagonal : far\t": {
         "linear: (fast) , angular: (straight)": 0,
         "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": 0
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
     },
     "right : tilted close\tfront : close\tleft : far\tright_diagonal : close\t": {
         "linear: (fast) , angular: (straight)": 0,
-        "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (slight left)": -0.2,
+        "linear: (fast) , angular: (turn left)": -0.2,
+        "linear: (fast) , angular: (hard left)": -0.2,
         "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": 0
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
     },
     "right : tilted close\tfront : close\tleft : far\tright_diagonal : far\t": {
         "linear: (fast) , angular: (straight)": 0,
         "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": 0
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
+    },
+    "right : tilted close\tfront : medium\tleft : close\tright_diagonal : close\t": {
+        "linear: (fast) , angular: (straight)": -0.052428800000000025,
+        "linear: (fast) , angular: (slight left)": 0.0,
+        "linear: (fast) , angular: (turn left)": 0.0,
+        "linear: (fast) , angular: (hard left)": 0.0,
+        "linear: (fast) , angular: (slight right)": -0.23040000000000005,
+        "linear: (fast) , angular: (turn right)": -0.16000000000000003,
+        "linear: (fast) , angular: (hard right)": 0.0
+    },
+    "right : tilted close\tfront : medium\tleft : close\tright_diagonal : far\t": {
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
+        "linear: (fast) , angular: (slight right)": 0,
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
+    },
+    "right : tilted close\tfront : medium\tleft : far\tright_diagonal : close\t": {
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0.0,
+        "linear: (fast) , angular: (turn left)": -0.36000000000000004,
+        "linear: (fast) , angular: (hard left)": -0.2,
+        "linear: (fast) , angular: (slight right)": -0.2,
+        "linear: (fast) , angular: (turn right)": 0.0,
+        "linear: (fast) , angular: (hard right)": -0.2
+    },
+    "right : tilted close\tfront : medium\tleft : far\tright_diagonal : far\t": {
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
+        "linear: (fast) , angular: (slight right)": 0,
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
     },
     "right : tilted close\tfront : far\tleft : close\tright_diagonal : close\t": {
         "linear: (fast) , angular: (straight)": 0,
         "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": 0
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
     },
     "right : tilted close\tfront : far\tleft : close\tright_diagonal : far\t": {
         "linear: (fast) , angular: (straight)": 0,
         "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": 0
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
     },
     "right : tilted close\tfront : far\tleft : far\tright_diagonal : close\t": {
         "linear: (fast) , angular: (straight)": 0,
         "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": 0
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
     },
     "right : tilted close\tfront : far\tleft : far\tright_diagonal : far\t": {
         "linear: (fast) , angular: (straight)": 0,
         "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": 0
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
     },
     "right : good\tfront : close\tleft : close\tright_diagonal : close\t": {
         "linear: (fast) , angular: (straight)": 0,
         "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": 0
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
     },
     "right : good\tfront : close\tleft : close\tright_diagonal : far\t": {
         "linear: (fast) , angular: (straight)": 0,
         "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": 0
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
     },
     "right : good\tfront : close\tleft : far\tright_diagonal : close\t": {
         "linear: (fast) , angular: (straight)": 0,
         "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": 0
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
     },
     "right : good\tfront : close\tleft : far\tright_diagonal : far\t": {
         "linear: (fast) , angular: (straight)": 0,
         "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": 0
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
+    },
+    "right : good\tfront : medium\tleft : close\tright_diagonal : close\t": {
+        "linear: (fast) , angular: (straight)": 0.0,
+        "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0.0,
+        "linear: (fast) , angular: (hard left)": 0,
+        "linear: (fast) , angular: (slight right)": 0,
+        "linear: (fast) , angular: (turn right)": 0.0,
+        "linear: (fast) , angular: (hard right)": 0.0
+    },
+    "right : good\tfront : medium\tleft : close\tright_diagonal : far\t": {
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
+        "linear: (fast) , angular: (slight right)": 0,
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
+    },
+    "right : good\tfront : medium\tleft : far\tright_diagonal : close\t": {
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
+        "linear: (fast) , angular: (slight right)": 0,
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
+    },
+    "right : good\tfront : medium\tleft : far\tright_diagonal : far\t": {
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
+        "linear: (fast) , angular: (slight right)": 0,
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
     },
     "right : good\tfront : far\tleft : close\tright_diagonal : close\t": {
         "linear: (fast) , angular: (straight)": 0,
         "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": 0
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
     },
     "right : good\tfront : far\tleft : close\tright_diagonal : far\t": {
         "linear: (fast) , angular: (straight)": 0,
         "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": 0
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
     },
     "right : good\tfront : far\tleft : far\tright_diagonal : close\t": {
         "linear: (fast) , angular: (straight)": 0,
         "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": 0
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
     },
     "right : good\tfront : far\tleft : far\tright_diagonal : far\t": {
         "linear: (fast) , angular: (straight)": 0,
         "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": 0
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
     },
     "right : tilted far\tfront : close\tleft : close\tright_diagonal : close\t": {
         "linear: (fast) , angular: (straight)": 0,
         "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": 0
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
     },
     "right : tilted far\tfront : close\tleft : close\tright_diagonal : far\t": {
         "linear: (fast) , angular: (straight)": 0,
         "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": 0
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
     },
     "right : tilted far\tfront : close\tleft : far\tright_diagonal : close\t": {
         "linear: (fast) , angular: (straight)": 0,
         "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": 0
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
     },
     "right : tilted far\tfront : close\tleft : far\tright_diagonal : far\t": {
         "linear: (fast) , angular: (straight)": 0,
         "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": 0
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
+    },
+    "right : tilted far\tfront : medium\tleft : close\tright_diagonal : close\t": {
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
+        "linear: (fast) , angular: (slight right)": 0,
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
+    },
+    "right : tilted far\tfront : medium\tleft : close\tright_diagonal : far\t": {
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
+        "linear: (fast) , angular: (slight right)": 0,
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
+    },
+    "right : tilted far\tfront : medium\tleft : far\tright_diagonal : close\t": {
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
+        "linear: (fast) , angular: (slight right)": 0,
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
+    },
+    "right : tilted far\tfront : medium\tleft : far\tright_diagonal : far\t": {
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
+        "linear: (fast) , angular: (slight right)": 0,
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
     },
     "right : tilted far\tfront : far\tleft : close\tright_diagonal : close\t": {
         "linear: (fast) , angular: (straight)": 0,
         "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": 0
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
     },
     "right : tilted far\tfront : far\tleft : close\tright_diagonal : far\t": {
         "linear: (fast) , angular: (straight)": 0,
         "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": 0
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
     },
     "right : tilted far\tfront : far\tleft : far\tright_diagonal : close\t": {
         "linear: (fast) , angular: (straight)": 0,
         "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": 0
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
     },
     "right : tilted far\tfront : far\tleft : far\tright_diagonal : far\t": {
         "linear: (fast) , angular: (straight)": 0,
         "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": 0
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
     },
     "right : far\tfront : close\tleft : close\tright_diagonal : close\t": {
         "linear: (fast) , angular: (straight)": 0,
         "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": 0
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
     },
     "right : far\tfront : close\tleft : close\tright_diagonal : far\t": {
         "linear: (fast) , angular: (straight)": 0,
         "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": 0
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
     },
     "right : far\tfront : close\tleft : far\tright_diagonal : close\t": {
         "linear: (fast) , angular: (straight)": 0,
         "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": 0
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
     },
     "right : far\tfront : close\tleft : far\tright_diagonal : far\t": {
         "linear: (fast) , angular: (straight)": 0,
         "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": 0
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
+    },
+    "right : far\tfront : medium\tleft : close\tright_diagonal : close\t": {
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
+        "linear: (fast) , angular: (slight right)": 0,
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
+    },
+    "right : far\tfront : medium\tleft : close\tright_diagonal : far\t": {
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
+        "linear: (fast) , angular: (slight right)": 0,
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
+    },
+    "right : far\tfront : medium\tleft : far\tright_diagonal : close\t": {
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
+        "linear: (fast) , angular: (slight right)": 0,
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
+    },
+    "right : far\tfront : medium\tleft : far\tright_diagonal : far\t": {
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
+        "linear: (fast) , angular: (slight right)": 0,
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
     },
     "right : far\tfront : far\tleft : close\tright_diagonal : close\t": {
         "linear: (fast) , angular: (straight)": 0,
         "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": 0
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
     },
     "right : far\tfront : far\tleft : close\tright_diagonal : far\t": {
         "linear: (fast) , angular: (straight)": 0,
         "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": 0
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
     },
     "right : far\tfront : far\tleft : far\tright_diagonal : close\t": {
         "linear: (fast) , angular: (straight)": 0,
         "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": 0
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
     },
     "right : far\tfront : far\tleft : far\tright_diagonal : far\t": {
         "linear: (fast) , angular: (straight)": 0,
         "linear: (fast) , angular: (slight left)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
         "linear: (fast) , angular: (slight right)": 0,
-        "linear: (fast) , angular: (hard right)": 0,
-        "linear: (fast) , angular: (hard left)": 0
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
     }
 }
