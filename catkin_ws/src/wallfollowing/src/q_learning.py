@@ -526,7 +526,7 @@ class q_learning() :
         nx,ny,nz,w = tuple(quaternion_from_euler(0,0,theta))        
         self.set_model_pos(x,y,nx=nx,ny=ny,nz=nz,w=w)
 
-
+        print('BRANCH')
         self.cache['incoming scan data'] = None
         wait_counter = 0
         while self.cache['incoming scan data'] == None and not rospy.is_shutdown() :
