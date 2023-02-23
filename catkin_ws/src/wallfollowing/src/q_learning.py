@@ -159,7 +159,6 @@ class q_learning() :
         self.scan_key = {
             'right' : [ ( 225 , 315 ) ] ,
             'front' : [ ( 0 , 30 ) , ( 330 , 359 ) ] ,
-            'left' : [ ( 45 , 135 ) ] ,
             'right_diagonal' : [ ( 250 , 330 ) ],
         }
 
@@ -180,11 +179,11 @@ class q_learning() :
         self.hard_turn_vel = math.pi/2
 
         
-        self.rotational_actions = {'straight' : 0 , 
-                                    'slight left' : -self.slight_turn_vel ,
+        self.rotational_actions = {'straight' : 0.001 , 
+                                    #'slight left' : -self.slight_turn_vel ,
                                     'turn left' : -self.turn_vel, 
                                     'hard left' : -self.hard_turn_vel, 
-                                    'slight right' : self.slight_turn_vel ,
+                                    #'slight right' : self.slight_turn_vel ,
                                     'turn right' : self.turn_vel, 
                                     'hard right' : self.hard_turn_vel
                                     }
@@ -205,7 +204,6 @@ class q_learning() :
         self.directional_states = {
             'right' : ['close' , 'tilted close' , 'good' , 'tilted far' , 'far'],
             'front' : ['close', 'far'],
-            'left' : ['close' , 'far'],
             'right_diagonal' : ['close' , 'far'],
         }
 
@@ -215,7 +213,6 @@ class q_learning() :
         self.thresholds = {
             'right' : {'close' : (0 , 0.8*d_w) , 'tilted close' : (0.8*d_w , 0.95*d_w) , 'good' : (0.95*d_w , 1.05*d_w), 'tilted far' : (1.05*d_w , 1.2*d_w) , 'far' : (1.2*d_w , 20)},
             'front' : {'close' : (0 , 1.5*d_w) , 'far' : (1.5*d_w , 20)},
-            'left' : {'close' : (0 , fast_tr) , 'far' : ( fast_tr , 20)},
             'right_diagonal' : { 'close' : (0 , 1.2*d_w) , 'far' : (1.2*d_w , 20) },
         }
 
@@ -281,7 +278,19 @@ class q_learning() :
             self.set_state = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)
             rospy.loginfo(f'-----Rospy Service [set model state] activated')
         except :
-            rospy.logerr(f'Unable to connect to rospy service set model state')        
+            rospy.logerr(f'Unable to connect to rospy service set model state')
+
+        rospy.wait_for_service('/gazebo/pause_physics')
+        try :
+            self.pause_physics = rospy.ServiceProxy('/gazebo/pause_physics', Empty)
+        except :
+            rospy.logerr(f'Unable to connect to rospy service pause physics')
+        
+        rospy.wait_for_service('/gazebo/unpause_physics')
+        try :
+            self.unpause_physics = rospy.ServiceProxy('/gazebo/unpause_physics', Empty)
+        except :
+            rospy.logerr(f'Unable to connect to rospy service pause physics')        
 
 
 
@@ -465,6 +474,7 @@ class q_learning() :
         rospy.loginfo(f'-------Initializing Training Cycle-------')
 
         #  Wait for gazebo's first callback
+        self.unpause_physics()
         while self.cache['incoming scan data'] == None and not rospy.is_shutdown() :
             rospy.loginfo(f'-----Waiting for scan data-------')
             rospy.sleep(1)
@@ -519,6 +529,7 @@ class q_learning() :
         '''
 
         #  Wait for gazebo's first callback
+        self.unpause_physics()
         while self.cache['scan data'] == None and not rospy.is_shutdown() :
             rospy.loginfo(f'-----Waiting for scan data-------')
             rospy.sleep(1)
@@ -565,14 +576,14 @@ class q_learning() :
         while not rospy.is_shutdown() and count < limit and repeat_states < repeat_limit :
             rospy.sleep(0.1)
             
-
+            self.pause_physics()
             #  Discretized scan data to Q table state information
             new_state = self.scan_to_state(self.cache['scan data'].ranges)
             repeat_states += 1
 
             if repeat_states > 0.9*repeat_limit  :
                 rospy.loginfo(f'TIMEOUT')
-                q_table = self.update_Q_table(q_table , self.cache['state'] , -50 , self.cache['action'] , self.cache['state'])
+                q_table = self.update_Q_table(q_table , self.cache['state'] , -15 , self.cache['action'] , self.cache['state'])
                 break
 
 
@@ -588,7 +599,7 @@ class q_learning() :
             if new_state != self.cache['state'] :
                 repeat_states = 0
                 count += 1  
-                state = self.cache['state']
+            state = self.cache['state']
 
             #  Gets the highest utility action for the robots current state
             action = max( q_table[new_state], key = q_table[new_state].get )
@@ -598,8 +609,6 @@ class q_learning() :
             
             #  Converts Q table action to linear and angular velocities
             x , nz = self.actions[ action ]
-            #  Publishes linear and angular velocities as Twist object 
-            self.publish_velocity( x = x , nz = nz )
 
             reward = self.get_reward( new_state , self.cache['scan data'].ranges )
 
@@ -608,8 +617,14 @@ class q_learning() :
 
             crash_queue += [ ( new_state , action , self.cache['position']) ]
 
+            
             self.cache[ 'state' ] = new_state
             self.cache[ 'action' ] = action
+            
+            self.unpause_physics()
+            #  Publishes linear and angular velocities as Twist object 
+            self.publish_velocity( x = x , nz = nz )
+        self.unpause_physics()
         return q_table , None , None
 
 
