@@ -50,6 +50,11 @@ class q_learning() :
 
 
     '''
+    NOTE!  re-add punishment for spinning...
+    '''
+
+
+    '''
     TODO! Add a controller model for rotational speed.
     NOTE! Possible make this a fuzzy logic controller or a new RL model to affect turning speed.
     '''
@@ -158,10 +163,13 @@ class q_learning() :
         #  Sensor ranges in degrees for which lidar sensors to use for each direction
         #  on the robot.
         self.scan_key = {
-            'right' : [ ( 240 , 359 ) ] ,
+            'right' : [ ( 245 , 335 ) ] ,
             'front' : [ ( 0 , 30 ) , ( 330 , 359 ) ] ,
-            #'left' : [ ( 45 , 135 ) ] ,
-            'right_diagonal' : [ ( 300 , 359 ) ],
+            'orientation_forward' : [ ( 270 , 359 ) ] ,
+            #'orientation_right' : [ ( 265 , 275 ) ] ,
+            #'orientation_backward' : [ ( 200 , 210 ) ],
+            'left' : [ ( 45 , 135 ) ] ,
+            #'right_diagonal' : [ ( 180 , 210) ],
         }
 
         self.start_positions = [
@@ -181,10 +189,10 @@ class q_learning() :
 
         
         self.rotational_actions = {'straight' : 0.001 , 
-                                    'slight left' : -0.5 ,
+                                    #'slight left' : -0.5 ,
                                     'turn left' : -0.95, 
                                     'hard left' : -1.4, 
-                                    'slight right' : 0.5 ,
+                                    #'slight right' : 0.5 ,
                                     'turn right' : 0.95, 
                                     'hard right' : 1.4
                                     }
@@ -203,18 +211,26 @@ class q_learning() :
             each element in the tuple (right , front , left)
         '''
         self.directional_states = {
-            'right' : ['close' , 'tilted close' , 'good' , 'tilted far' , 'far'],
+            'right' : ['close' , 'tilted close', 'good' , 'tilted far' , 'far'],
             'front' : ['close' , 'medium' , 'far'],
-            'right_diagonal' : ['close' , 'far'],
+            'orientation_forward' : ['close' , 'far'],
+            #'orientation_right' : ['close' , 'far'],
+            #'orientation_backward' : ['close' , 'far'],
+            'left' : ['close' , 'far']
+            #'right_diagonal' : ['close' , 'far'],
         }
 
         fast_tr = 4*( self.linear_actions['fast'] / self.hard_turn_vel )  #  Fast turning radius
 
         #  Sets state thresholds to discretized scan distance data.
         self.thresholds = {
-            'right' : {'close' : (0 , 0.5*d_w) , 'tilted close' : (0.5*d_w , 0.9*d_w) , 'good' : (0.9*d_w , 1.1*d_w), 'tilted far' : (1.1*d_w , 1.5*d_w) , 'far' : (1.5*d_w , 20)},
-            'front' : {'close' : (0 , 0.5) , 'medium' : (0.5 , self.d_w) , 'far' : (self.d_w , 20)},
-            'right_diagonal' : {'close' : (0 , 0.5) , 'far' : (0.5 , 20)},
+            'right' : {'close' : (0 , 0.35), 'tilted close' : (0.35 , 0.9*d_w), 'good' : (0.9*d_w , 1.1*d_w), 'tilted far' : (1.1*d_w , 1.5*d_w), 'far' : (1.5*d_w , 20)},
+            'front' : {'close' : (0 , 0.5) , 'medium' : (0.5 , 0.75) , 'far' : (0.75 , 20)},
+            'orientation_forward' : {'close' : (0,0.85) , 'far' : (0.85,20)},
+            #'orientation_right' : {'close' : (0,0.85) , 'far' : (0.85,20)},
+            #'orientation_backward' : {'close' : (0,0.85) , 'far' : (0.85,20)},
+            'left' : {'close' : (0,0.75), 'far' : (0.75,20) }
+            #'right_diagonal' : {'close' : (0 , 1) , 'far' : (1 , 20)},
         }
 
 
@@ -444,7 +460,10 @@ class q_learning() :
         return min(state_range)
 
 
-    def get_reward( self , state , scanArray ) :
+    def get_reward( self , state , scanArray, action= 0 ) :
+        if action != 0 :
+            action = 0.5*abs(self.actions[ action ][1])
+            if action < 1.2 : action = 0
         if self.is_blocked(scanArray) : 
             return -5
         #if state[0] == 'right : far' : 
@@ -452,16 +471,24 @@ class q_learning() :
 
         x = self.get_distance(scanArray , 'right')
         y = self.get_distance(scanArray , 'front')
+        z = self.get_distance(scanArray , 'left')
 
-        if abs(x-self.d_w) > 0.1 : return 0
-        return 5
-
+        if abs(x-self.d_w) < 0.1 and y>0.5 : return 5 - action
+        #return 5
+        fx = -5*math.sin((math.pi*(x-0.5))/6) + y - action
+        if z< 0.75 :
+            fx += - (3.5 - z)
+        return fx
 
         fx = 0
         if x > self.d_w :
             fx = -5*math.sin((math.pi*(x-0.5))/6)
+            if z< 0.75 :
+                fx += - (3.5 - z)
         else : 
             fx = 10*math.sin(math.pi*x)-10
+            if z<0.75 :
+                fx +=  - (3.5 - z)
         
         return fx
 
@@ -471,7 +498,7 @@ class q_learning() :
         #return 1
 
 
-    def update_Q_table( self, q_table , state , reward , action , new_state , gamma = 1, alpha = 0.2, strategy = 'SARSA', new_action = None ) :
+    def update_Q_table( self, q_table , state , reward , action , new_state , gamma = 1, alpha = 0.1, strategy = 'Temporal Difference', new_action = None ) :
         if strategy == 'Temporal Difference' :
             sample = reward + gamma*max(q_table[new_state].values())
         elif strategy == 'SARSA' :
@@ -506,7 +533,6 @@ class q_learning() :
             rospy.loginfo(f'\t\t\t\t Running epoc {epoc+1}/{num_epocs}')
             epoc += 1
             epsilon = temp*(1-epoc/num_epocs)+0.1
-            epsilon = random.random()
             rospy.loginfo(f'------ Epsilon:  {round(epsilon,3)}  -------------')
 
             q_table, accum_reward, run_info = self.run_epoc( q_table , epsilon , strategy = strategy )
@@ -592,22 +618,22 @@ class q_learning() :
         repeat_states = 0
 
         while not rospy.is_shutdown() and count < limit and repeat_states < repeat_limit :
-            rospy.sleep(0.2)
+            rospy.sleep(0.1)
             
-            self.pause_physics()
             #  Discretized scan data to Q table state information
             new_state = self.scan_to_state(self.cache['scan data'].ranges)
             repeat_states += 1
 
             if repeat_states > 0.9*repeat_limit  :
                 rospy.loginfo(f'TIMEOUT')
+                q_table = self.update_Q_table( q_table , self.cache['state'] , -5 , self.cache[ 'action' ] , new_state, new_action=action)
                 break
 
 
             if new_state != self.cache['state'] :
                 repeat_states = 0
                 count += 1  
-                state = self.cache['state']
+            state = self.cache['state']
 
             #  Gets the highest utility action for the robots current state
             action = max( q_table[new_state], key = q_table[new_state].get )
@@ -618,19 +644,17 @@ class q_learning() :
             #  Converts Q table action to linear and angular velocities
             x , nz = self.actions[ action ]
 
-            reward = self.get_reward( new_state , self.cache['scan data'].ranges )
-
-
+            reward = self.get_reward( new_state , self.cache['scan data'].ranges, self.cache[ 'action' ] )
 
             #  update q table.
-            q_table = self.update_Q_table( q_table , state , reward , self.cache[ 'action' ] , new_state, new_action=action )
+            q_table = self.update_Q_table( q_table , state , reward , self.cache[ 'action' ] , new_state, new_action=action)
 
             crash_queue += [ ( new_state , action , self.cache['position']) ]
 
             
             self.cache[ 'state' ] = new_state
             self.cache[ 'action' ] = action
-            self.unpause_physics()
+
             #  Publishes linear and angular velocities as Twist object 
             self.publish_velocity( x = x , nz = nz )
             
@@ -638,17 +662,14 @@ class q_learning() :
             #if self.is_blocked(self.cache['scan data'].ranges) or new_state[0] == 'right : far' :
             if self.is_blocked(self.cache['scan data'].ranges) :
                 rospy.loginfo(f'----Resetting World-----')
-                self.unpause_physics()
                 self.reset_world()
                 self.publish_velocity( x = 0 , nz = 0 )
                 break
             
-            self.unpause_physics()
-        self.unpause_physics()
         return q_table , None , None
 
 
-    def softmax( self , q_table , state , T = 2 ) :
+    def softmax( self , q_table , state , T = 10 ) :
         z = sum( [math.exp(a/T) for a in q_table[state].values() ] )
         return [ math.exp(a/T)/z for a in q_table[state].values() ]
 
@@ -872,7 +893,7 @@ class q_learning() :
             NOTE! either check every lidar scanner or just the front. (right now checking everything.)
         '''
         for range in scanArray :
-            if range < 0.18 :
+            if range < 0.17 :
                 return True
         return False
 
