@@ -47,25 +47,6 @@ class q_learning() :
                 SARSA --> special input
 
     '''
-
-
-    '''
-    NOTE!  re-add punishment for spinning...
-    '''
-
-
-    '''
-    TODO! Add a controller model for rotational speed.
-    NOTE! Possible make this a fuzzy logic controller or a new RL model to affect turning speed.
-    '''
-
-
-    '''
-    NOTE! fix reward structure, 
-        Either parabolic
-        or just reward for being in the correct spot.
-    '''
-
     def __init__( self , out_filename = None , 
                         in_filename = None , 
                         train = False , 
@@ -89,19 +70,34 @@ class q_learning() :
             self.record_info = {
                 'Accumulated Rewards' : 
                     {
-                        'epocs' : [] ,
-                        'data' : []
+                        'epocs' : [0] ,
+                        'data' : [0]
                     } ,
-                'Correct Left Ratio' :
+                'Correct Slight Left Ratio' :
                     {
-                        'epocs' : [],
-                        'data' : []
+                        'epocs' : [0],
+                        'data' : [0]
                     } ,
-                'Correct Right Ratio' : 
+                'Correct Slight Right Ratio' : 
                     {
-                        'epocs' : [],
-                        'data' : []
-                    }   
+                        'epocs' : [0],
+                        'data' : [0]
+                    } ,
+                'Correct Hard Left Ratio' :
+                    {
+                        'epocs' : [0],
+                        'data' : [0]
+                    } ,
+                'Correct Hard Right Ratio' : 
+                    {
+                        'epocs' : [0],
+                        'data' : [0]
+                    } ,
+                'Correct Straight Ratio' :
+                    {
+                        'epocs' : [0],
+                        'data' : [0]
+                    }
             }
         self.known_action_states = self.load_q_table_from_JSON('known_states_tracker')
 
@@ -156,34 +152,35 @@ class q_learning() :
                  'position' : None }
         
         #  Desired distance from walls
-        d_w = 0.5
+        d_w = 0.45
 
         self.d_w = d_w
 
         #  Sensor ranges in degrees for which lidar sensors to use for each direction
         #  on the robot.
         self.scan_key = {
-            'right' : [ ( 245 , 335 ) ] ,
+            'right' : [ ( 240 , 355 ) ] ,
             'front' : [ ( 0 , 30 ) , ( 330 , 359 ) ] ,
-            'orientation_forward' : [ ( 270 , 359 ) ] ,
+            'orientation_forward' : [ ( 265 , 359 ) ] ,
             #'orientation_right' : [ ( 265 , 275 ) ] ,
             #'orientation_backward' : [ ( 200 , 210 ) ],
-            'left' : [ ( 45 , 135 ) ] ,
+            'left' : [ ( 55 , 125 ) ] ,
             #'right_diagonal' : [ ( 180 , 210) ],
         }
 
         self.start_positions = [
             (-1.7,-1.7,0 ),
             (0,2,math.pi),
-            (2,1.3,math.pi/2),
+            (1.8,0.8,math.pi/2),
             (1.7,-1.7,math.pi/2),
+            (1.8,1.8,3*math.pi/2),
+            (-2,0.5,0)
             #('random','random','random')
         ]
 
         #  List of linear speeds
         self.linear_actions = { 'fast' : 0.2 }
 
-        self.slight_turn_vel = math.pi/6
         self.turn_vel = math.pi/4
         self.hard_turn_vel = math.pi/2
 
@@ -220,8 +217,6 @@ class q_learning() :
             #'right_diagonal' : ['close' , 'far'],
         }
 
-        fast_tr = 4*( self.linear_actions['fast'] / self.hard_turn_vel )  #  Fast turning radius
-
         #  Sets state thresholds to discretized scan distance data.
         self.thresholds = {
             'right' : {'close' : (0 , 0.35), 'tilted close' : (0.35 , 0.9*d_w), 'good' : (0.9*d_w , 1.1*d_w), 'tilted far' : (1.1*d_w , 1.5*d_w), 'far' : (1.5*d_w , 20)},
@@ -229,7 +224,7 @@ class q_learning() :
             'orientation_forward' : {'close' : (0,0.85) , 'far' : (0.85,20)},
             #'orientation_right' : {'close' : (0,0.85) , 'far' : (0.85,20)},
             #'orientation_backward' : {'close' : (0,0.85) , 'far' : (0.85,20)},
-            'left' : {'close' : (0,0.75), 'far' : (0.75,20) }
+            'left' : {'close' : (0,0.6), 'far' : (0.6,20) }
             #'right_diagonal' : {'close' : (0 , 1) , 'far' : (1 , 20)},
         }
 
@@ -527,6 +522,30 @@ class q_learning() :
         epoc = 0
         epsilon = 0.8
         temp = epsilon
+        update_plot_flag = False
+
+        history = {
+                    'slight left' : {
+                        'correct' : 0,
+                        'total' : 0
+                    },
+                    'slight right' : {
+                        'correct' : 0,
+                        'total' : 0
+                    },
+                    'hard left' : {
+                        'correct' : 0,
+                        'total' : 0
+                    },
+                    'hard right' : {
+                        'correct' : 0,
+                        'total' : 0
+                    },
+                    'straight' : {
+                        'correct' : 0,
+                        'total' : 0
+                    },
+                }
 
         while epoc < num_epocs and not rospy.is_shutdown() :
             rospy.sleep(0)
@@ -539,20 +558,79 @@ class q_learning() :
             
             if self.out_filename != None :
                 self.save_q_table_to_JSON( q_table , self.out_filename )
-            
+            update_plot_flag = False
             if self.plot_out_file != None :
                 if accum_reward != 0 :
                     self.record_info['Accumulated Rewards']['epocs'] += [ epoc-1 ]
                     self.record_info['Accumulated Rewards']['data'] += [ accum_reward ]
-                if run_info['left']['total'] > 0 :
-                    if run_info['left']['correct'] > 0 :
-                        self.record_info['Correct Left Ratio']['data'] += [ run_info['left']['correct']/run_info['left']['total'] ]
-                        self.record_info['Correct Left Ratio']['epocs'] += [epoc-1]
-                if run_info['right']['total'] > 0 :
-                    if run_info['right']['correct'] > 0 :
-                        self.record_info['Correct Right Ratio']['data'] += [ run_info['right']['correct']/run_info['right']['total'] ] 
-                        self.record_info['Correct Right Ratio']['epocs'] += [epoc-1]
-                self.plot( self.record_info , self.plot_out_file )
+                if run_info['slight left']['total'] > 0 :
+                    if run_info['slight left']['correct'] > 0 :
+                        if history['slight left']['total'] + run_info['slight left']['total'] > 10 :
+                            run_info['slight left']['total'] = history['slight left']['total'] + run_info['slight left']['total']
+                            run_info['slight left']['correct'] = history['slight left']['correct'] + run_info['slight left']['correct']
+                            history['slight left']['total'] = 0
+                            history['slight left']['correct'] = 0
+                            self.record_info['Correct Slight Left Ratio']['data'] += [ run_info['slight left']['correct']/run_info['slight left']['total'] ]
+                            self.record_info['Correct Slight Left Ratio']['epocs'] += [epoc-1]
+                            update_plot_flag = True
+                        else :
+                            history['slight left']['total'] += run_info['slight left']['total']
+                            history['slight left']['correct'] += run_info['slight left']['correct']
+
+                if run_info['slight right']['total'] > 0 :
+                    if run_info['slight right']['correct'] > 0 :
+                        if history['slight right']['total'] + run_info['slight right']['total'] > 10 :
+                            run_info['slight right']['total'] = history['slight right']['total'] + run_info['slight right']['total']
+                            run_info['slight right']['correct'] = history['slight right']['correct'] + run_info['slight right']['correct']
+                            history['slight right']['total'] = 0
+                            history['slight right']['correct'] = 0
+                            self.record_info['Correct Slight Right Ratio']['data'] += [ run_info['slight right']['correct']/run_info['slight right']['total'] ] 
+                            self.record_info['Correct Slight Right Ratio']['epocs'] += [epoc-1]
+                            update_plot_flag = True
+                        else : 
+                            history['slight right']['total'] += run_info['slight right']['total']
+                            history['slight right']['correct'] += run_info['slight right']['correct']                            
+                if run_info['hard left']['total'] > 0 :
+                    if run_info['hard left']['correct'] > 0 :
+                        if history['hard left']['total'] + run_info['hard left']['total'] > 10 :
+                            run_info['hard left']['total'] = history['hard left']['total'] + run_info['hard left']['total']
+                            run_info['hard left']['correct'] = history['hard left']['correct'] + run_info['hard left']['correct']
+                            history['hard left']['total'] = 0
+                            history['hard left']['correct'] = 0
+                            self.record_info['Correct Hard Left Ratio']['data'] += [ run_info['hard left']['correct']/run_info['hard left']['total'] ]
+                            self.record_info['Correct Hard Left Ratio']['epocs'] += [epoc-1]
+                            update_plot_flag = True
+                        else : 
+                            history['hard left']['total'] += run_info['hard left']['total']
+                            history['hard left']['correct'] += run_info['hard left']['correct'] 
+                if run_info['hard right']['total'] > 0 :
+                    if run_info['hard right']['correct'] > 0 :
+                        if history['hard right']['total'] + run_info['hard right']['total'] > 10 :
+                            run_info['hard right']['total'] = history['hard right']['total'] + run_info['hard right']['total']
+                            run_info['hard right']['correct'] = history['hard right']['correct'] + run_info['hard right']['correct']
+                            history['hard right']['total'] = 0
+                            history['hard right']['correct'] = 0
+                            self.record_info['Correct Hard Right Ratio']['data'] += [ run_info['hard right']['correct']/run_info['hard right']['total'] ] 
+                            self.record_info['Correct Hard Right Ratio']['epocs'] += [epoc-1]
+                            update_plot_flag = True
+                        else : 
+                            history['hard right']['total'] += run_info['hard right']['total']
+                            history['hard right']['correct'] += run_info['hard right']['correct']
+                if run_info['straight']['total'] > 0 :
+                    if run_info['straight']['correct'] > 0 :
+                        if history['straight']['total'] + run_info['straight']['total'] > 10 :
+                            run_info['straight']['total'] = history['straight']['total'] + run_info['straight']['total']
+                            run_info['straight']['correct'] = history['straight']['correct'] + run_info['straight']['correct']
+                            history['straight']['total'] = 0
+                            history['straight']['correct'] = 0
+                            self.record_info['Correct Straight Ratio']['data'] += [ run_info['straight']['correct']/run_info['straight']['total'] ] 
+                            self.record_info['Correct Straight Ratio']['epocs'] += [epoc-1]
+                            update_plot_flag = True
+                        else : 
+                            history['straight']['total'] += run_info['straight']['total']
+                            history['straight']['correct'] += run_info['straight']['correct'] 
+                if update_plot_flag == True :
+                    self.plot( self.record_info , self.plot_out_file )
         rospy.loginfo(f'-------Training Complete-------')
         self.reset_world()
         return q_table
@@ -567,8 +645,32 @@ class q_learning() :
             runs a single epoc in training
         '''
 
+        total_reward = 0
+        run_info = {
+            'slight left' : {
+                'correct' : 0,
+                'total' : 0
+            },
+            'slight right' : {
+                'correct' : 0,
+                'total' : 0
+            },
+            'hard left' : {
+                'correct' : 0,
+                'total' : 0
+            },
+            'hard right' : {
+                'correct' : 0,
+                'total' : 0
+            },
+            'straight' : {
+                'correct' : 0,
+                'total' : 0
+            },
+        }
+
+        random_action_flag = False
         #  Wait for gazebo's first callback
-        self.unpause_physics()
         while self.cache['scan data'] == None and not rospy.is_shutdown() :
             rospy.loginfo(f'-----Waiting for scan data-------')
             rospy.sleep(1)
@@ -602,6 +704,7 @@ class q_learning() :
         action = max( q_table[state], key = q_table[state].get )
         action = np.random.choice( [action , 'random'] , p=[ 1-epsilon , epsilon ] )
         if action == 'random' : 
+            random_action_flag = True
             action = np.random.choice(list(self.actions.keys()) , p=self.softmax(q_table , state))
 
         #  Converts Q table action to linear and angular velocities
@@ -620,6 +723,14 @@ class q_learning() :
         while not rospy.is_shutdown() and count < limit and repeat_states < repeat_limit :
             rospy.sleep(0.1)
             
+
+            
+            direction , mod = self.is_known_state(self.cache[ 'state' ]  , self.cache[ 'action' ])
+            if random_action_flag == True :
+                if direction != None :
+                    run_info[direction]['total'] += 1
+                    run_info[direction]['correct'] += mod
+
             #  Discretized scan data to Q table state information
             new_state = self.scan_to_state(self.cache['scan data'].ranges)
             repeat_states += 1
@@ -636,9 +747,11 @@ class q_learning() :
             state = self.cache['state']
 
             #  Gets the highest utility action for the robots current state
+            random_action_flag = False
             action = max( q_table[new_state], key = q_table[new_state].get )
             action = np.random.choice( [action , 'random'] , p=[ 1-epsilon , epsilon ] )
             if action == 'random' : 
+                random_action_flag = True
                 action = np.random.choice(list(self.actions.keys()), p=self.softmax( q_table , state ) )
             
             #  Converts Q table action to linear and angular velocities
@@ -651,6 +764,7 @@ class q_learning() :
 
             crash_queue += [ ( new_state , action , self.cache['position']) ]
 
+            total_reward += reward
             
             self.cache[ 'state' ] = new_state
             self.cache[ 'action' ] = action
@@ -666,7 +780,7 @@ class q_learning() :
                 self.publish_velocity( x = 0 , nz = 0 )
                 break
             
-        return q_table , None , None
+        return q_table , total_reward , run_info
 
 
     def softmax( self , q_table , state , T = 10 ) :
@@ -685,10 +799,16 @@ class q_learning() :
         if state in self.known_action_states.keys() :
             if action in self.known_action_states[state] :
                 mod = 1
-            if 'left' in ''.join(str(self.known_action_states[state])) : 
-                direction = 'left'
-            if 'right' in ''.join(str(self.known_action_states[state])) :
-                direction = 'right'
+            if "linear: (fast) , angular: (turn left)" in ''.join(str(self.known_action_states[state])) : 
+                direction = 'slight left'
+            if "linear: (fast) , angular: (turn right)" in ''.join(str(self.known_action_states[state])) :
+                direction = 'slight right'
+            if "linear: (fast) , angular: (hard left)" in ''.join(str(self.known_action_states[state])) : 
+                direction = 'hard left'
+            if "linear: (fast) , angular: (hard right)" in ''.join(str(self.known_action_states[state])) :
+                direction = 'hard right'
+            if "linear: (fast) , angular: (straight)" in ''.join(str(self.known_action_states[state])) :
+                direction = 'straight'
         return direction , mod
 
 
@@ -786,7 +906,7 @@ class q_learning() :
 
             reward = self.get_reward( new_state , self.cache['scan data'].ranges )
             crash_queue += [ (new_state,action,self.cache['scan data'].ranges) ]
-            print(reward)
+            print(state)
             rospy.sleep(0.5)
             self.publish_velocity(x=0,nz=0)
             self.cache[ 'state' ] = new_state
@@ -918,9 +1038,14 @@ class q_learning() :
             }
         '''
         try :
-            axes = tuple( plot_info.keys() )
+            for line_name in plot_info.keys() :
+                if line_name != 'Accumulated Rewards':
+                    plt.plot(plot_info[line_name]['epocs'], plot_info[line_name]['data'], linewidth=1.5, label = line_name)
+            plt.legend()
+            #axes = tuple( plot_info.keys() )
 
-            fig, axes = plt.subplots( len(axes) , 1 )
+            '''
+            fig, axes = plt.subplots( len(axes) , 1 , figsize=(15, 30))
 
             for axis , axis_name in zip(axes , plot_info.keys()) :
                 if len(plot_info[axis_name]['epocs'] ) > 0 :
@@ -929,8 +1054,10 @@ class q_learning() :
 
 
             fig.align_labels()
+            plt.rcParams.update({'font.size': 28})
             plt.tight_layout()
-
+            
+            '''
             plt.savefig(os.path.join(sys.path[0], f'{outfile}.pdf'))
             plt.close()
             return True
