@@ -1,47 +1,41 @@
 {
-    "right : good\tfront : far\torientation_forward : close\tleft : far\t": [
+    "right : tilted close\tfront : far\torientation_forward : close\tleft : close\t": [
         "linear: (fast) , angular: (straight)"
     ],
-    "right : tilted far\tfront : far\torientation_forward : far\tleft : far\t" : [
+    "right : good\tfront : far\torientation_forward : close\tleft : close\t": [
         "linear: (fast) , angular: (straight)"
     ],
-    "right : far\tfront : close\torientation_forward : close\tleft : far\t": [
+    "right : far\tfront : medium\torientation_forward : close\tleft : far\t": [
         "linear: (fast) , angular: (straight)"
     ],
-    "right : tilted close\tfront : medium\torientation_forward : close\tleft : far\t": [
-        "linear: (fast) , angular: (hard right)"
-    ],
-    "right : good\tfront : medium\torientation_forward : close\tleft : close\t": [
-        "linear: (fast) , angular: (hard right)"
-    ],
-    "right : good\tfront : medium\torientation_forward : close\tleft : far\t": [
+    "right : tilted far\tfront : far\torientation_forward : far\tleft : close\t": [
         "linear: (fast) , angular: (hard right)"
     ],
     "right : tilted far\tfront : medium\torientation_forward : close\tleft : close\t": [
         "linear: (fast) , angular: (hard right)"
     ],
-    "right : far\tfront : medium\torientation_forward : far\tleft : far\t": [
+    "right : tilted far\tfront : far\torientation_forward : far\tleft : far\t": [
         "linear: (fast) , angular: (turn right)"
     ],
-    "right : good\tfront : far\torientation_forward : close\tleft : close\t": [
+    "right : tilted far\tfront : close\torientation_forward : close\tleft : far\t": [
         "linear: (fast) , angular: (turn right)"
+    ],
+    "right : close\tfront : far\torientation_forward : far\tleft : far\t": [
+        "linear: (fast) , angular: (turn right)"
+    ],
+    "right : close\tfront : medium\torientation_forward : close\tleft : far\t": [
+        "linear: (fast) , angular: (hard left)"
+    ],
+    "right : good\tfront : medium\torientation_forward : close\tleft : close\t":[
+        "linear: (fast) , angular: (hard left)"
+    ],
+    "right : close\tfront : close\torientation_forward : close\tleft : far\t": [
+        "linear: (fast) , angular: (turn left)"
     ],
     "right : tilted close\tfront : close\torientation_forward : close\tleft : far\t": [
-        "linear: (fast) , angular: (turn right)"
-    ],
-    "right : far\tfront : close\torientation_forward : far\tleft : far\t": [
-        "linear: (fast) , angular: (hard left)"
-    ],
-    "right : good\tfront : far\torientation_forward : far\tleft : close\t": [
-        "linear: (fast) , angular: (hard left)"
-    ],
-    "right : close\tfront : far\torientation_forward : close\tleft : close\t": [
         "linear: (fast) , angular: (turn left)"
     ],
-    "right : close\tfront : far\torientation_forward : close\tleft : far\t": [
-        "linear: (fast) , angular: (turn left)"
-    ],
-    "right : tilted far\tfront : far\torientation_forward : far\tleft : close\t": [
+    "right : tilted close\tfront : far\torientation_forward : far\tleft : far\t": [
         "linear: (fast) , angular: (turn left)"
     ]
 }

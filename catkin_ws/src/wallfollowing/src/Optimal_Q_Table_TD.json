@@ -1,0 +1,422 @@
+{
+    "right : close\tfront : close\torientation_forward : close\tleft : close\t": {
+        "linear: (fast) , angular: (straight)": -20.987484397601317,
+        "linear: (fast) , angular: (turn left)": -18.308155549245534,
+        "linear: (fast) , angular: (hard left)": -21.931842202763292,
+        "linear: (fast) , angular: (turn right)": -20.95608986367898,
+        "linear: (fast) , angular: (hard right)": 8.123826839758014
+    },
+    "right : close\tfront : close\torientation_forward : close\tleft : far\t": {
+        "linear: (fast) , angular: (straight)": 168.90250413529782,
+        "linear: (fast) , angular: (turn left)": 219.9112968487606,
+        "linear: (fast) , angular: (hard left)": 160.18472508937265,
+        "linear: (fast) , angular: (turn right)": 142.78347604166729,
+        "linear: (fast) , angular: (hard right)": 163.31908529926034
+    },
+    "right : close\tfront : close\torientation_forward : far\tleft : close\t": {
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
+    },
+    "right : close\tfront : close\torientation_forward : far\tleft : far\t": {
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
+    },
+    "right : close\tfront : medium\torientation_forward : close\tleft : close\t": {
+        "linear: (fast) , angular: (straight)": 0.6268512663204698,
+        "linear: (fast) , angular: (turn left)": -0.1707471213907953,
+        "linear: (fast) , angular: (hard left)": 0,
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
+    },
+    "right : close\tfront : medium\torientation_forward : close\tleft : far\t": {
+        "linear: (fast) , angular: (straight)": 266.52355546557845,
+        "linear: (fast) , angular: (turn left)": 207.38438434552506,
+        "linear: (fast) , angular: (hard left)": 216.1165110484435,
+        "linear: (fast) , angular: (turn right)": 174.74827861031798,
+        "linear: (fast) , angular: (hard right)": 191.3699255529675
+    },
+    "right : close\tfront : medium\torientation_forward : far\tleft : close\t": {
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
+    },
+    "right : close\tfront : medium\torientation_forward : far\tleft : far\t": {
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
+    },
+    "right : close\tfront : far\torientation_forward : close\tleft : close\t": {
+        "linear: (fast) , angular: (straight)": 19.55713585404156,
+        "linear: (fast) , angular: (turn left)": 2.3612549924591115,
+        "linear: (fast) , angular: (hard left)": 0,
+        "linear: (fast) , angular: (turn right)": 1.843808812593768,
+        "linear: (fast) , angular: (hard right)": 2.4258207315139115
+    },
+    "right : close\tfront : far\torientation_forward : close\tleft : far\t": {
+        "linear: (fast) , angular: (straight)": 235.10755955500207,
+        "linear: (fast) , angular: (turn left)": 279.25256633670995,
+        "linear: (fast) , angular: (hard left)": 216.75981491366795,
+        "linear: (fast) , angular: (turn right)": 155.7793680710905,
+        "linear: (fast) , angular: (hard right)": 221.24046184400603
+    },
+    "right : close\tfront : far\torientation_forward : far\tleft : close\t": {
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
+    },
+    "right : close\tfront : far\torientation_forward : far\tleft : far\t": {
+        "linear: (fast) , angular: (straight)": 14.131347804874732,
+        "linear: (fast) , angular: (turn left)": 215.6081166730435,
+        "linear: (fast) , angular: (hard left)": 8.365798641525611,
+        "linear: (fast) , angular: (turn right)": 1.1122999908632607,
+        "linear: (fast) , angular: (hard right)": 21.941719419874616
+    },
+    "right : tilted close\tfront : close\torientation_forward : close\tleft : close\t": {
+        "linear: (fast) , angular: (straight)": -14.454814969468941,
+        "linear: (fast) , angular: (turn left)": -15.177097977900148,
+        "linear: (fast) , angular: (hard left)": -14.944534371003522,
+        "linear: (fast) , angular: (turn right)": -15.163857833641496,
+        "linear: (fast) , angular: (hard right)": -14.663648109343598
+    },
+    "right : tilted close\tfront : close\torientation_forward : close\tleft : far\t": {
+        "linear: (fast) , angular: (straight)": 58.379821207473185,
+        "linear: (fast) , angular: (turn left)": 180.47776388879686,
+        "linear: (fast) , angular: (hard left)": 112.31359669123307,
+        "linear: (fast) , angular: (turn right)": 154.83264368448732,
+        "linear: (fast) , angular: (hard right)": 61.50911047841754
+    },
+    "right : tilted close\tfront : close\torientation_forward : far\tleft : close\t": {
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
+    },
+    "right : tilted close\tfront : close\torientation_forward : far\tleft : far\t": {
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
+    },
+    "right : tilted close\tfront : medium\torientation_forward : close\tleft : close\t": {
+        "linear: (fast) , angular: (straight)": 27.76217378083238,
+        "linear: (fast) , angular: (turn left)": 3.867261669876947,
+        "linear: (fast) , angular: (hard left)": 1.7441821545031695,
+        "linear: (fast) , angular: (turn right)": -0.1094891115592167,
+        "linear: (fast) , angular: (hard right)": -0.34749580396663515
+    },
+    "right : tilted close\tfront : medium\torientation_forward : close\tleft : far\t": {
+        "linear: (fast) , angular: (straight)": 140.25148437999144,
+        "linear: (fast) , angular: (turn left)": 122.24993564485332,
+        "linear: (fast) , angular: (hard left)": 190.28376791773576,
+        "linear: (fast) , angular: (turn right)": 239.26520278320925,
+        "linear: (fast) , angular: (hard right)": 83.71485242227185
+    },
+    "right : tilted close\tfront : medium\torientation_forward : far\tleft : close\t": {
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
+    },
+    "right : tilted close\tfront : medium\torientation_forward : far\tleft : far\t": {
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
+    },
+    "right : tilted close\tfront : far\torientation_forward : close\tleft : close\t": {
+        "linear: (fast) , angular: (straight)": 0.86761006122516,
+        "linear: (fast) , angular: (turn left)": 0.5349022045302374,
+        "linear: (fast) , angular: (hard left)": 12.277692809460918,
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 25.020109295640346
+    },
+    "right : tilted close\tfront : far\torientation_forward : close\tleft : far\t": {
+        "linear: (fast) , angular: (straight)": 328.67521660247957,
+        "linear: (fast) , angular: (turn left)": 220.73933776058652,
+        "linear: (fast) , angular: (hard left)": 262.39624176566474,
+        "linear: (fast) , angular: (turn right)": 258.2650130574535,
+        "linear: (fast) , angular: (hard right)": 163.73886661775566
+    },
+    "right : tilted close\tfront : far\torientation_forward : far\tleft : close\t": {
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
+    },
+    "right : tilted close\tfront : far\torientation_forward : far\tleft : far\t": {
+        "linear: (fast) , angular: (straight)": 60.59681320063498,
+        "linear: (fast) , angular: (turn left)": 9.868717974433096,
+        "linear: (fast) , angular: (hard left)": 7.269340718026666,
+        "linear: (fast) , angular: (turn right)": 15.368763328367955,
+        "linear: (fast) , angular: (hard right)": 326.63243129526506
+    },
+    "right : good\tfront : close\torientation_forward : close\tleft : close\t": {
+        "linear: (fast) , angular: (straight)": -1.560559701402281,
+        "linear: (fast) , angular: (turn left)": -13.394521233195126,
+        "linear: (fast) , angular: (hard left)": -13.36794792297672,
+        "linear: (fast) , angular: (turn right)": -10.818763292539376,
+        "linear: (fast) , angular: (hard right)": -9.977458499186664
+    },
+    "right : good\tfront : close\torientation_forward : close\tleft : far\t": {
+        "linear: (fast) , angular: (straight)": 55.834533372770494,
+        "linear: (fast) , angular: (turn left)": 21.958654416887416,
+        "linear: (fast) , angular: (hard left)": 170.85926202224192,
+        "linear: (fast) , angular: (turn right)": 222.62734864255947,
+        "linear: (fast) , angular: (hard right)": 25.42418586523559
+    },
+    "right : good\tfront : close\torientation_forward : far\tleft : close\t": {
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
+    },
+    "right : good\tfront : close\torientation_forward : far\tleft : far\t": {
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
+    },
+    "right : good\tfront : medium\torientation_forward : close\tleft : close\t": {
+        "linear: (fast) , angular: (straight)": 1.379522402522309,
+        "linear: (fast) , angular: (turn left)": -0.6619726888484199,
+        "linear: (fast) , angular: (hard left)": -1.4891827214586426,
+        "linear: (fast) , angular: (turn right)": 2.949713784118086,
+        "linear: (fast) , angular: (hard right)": 11.528228836760217
+    },
+    "right : good\tfront : medium\torientation_forward : close\tleft : far\t": {
+        "linear: (fast) , angular: (straight)": 256.37458314291996,
+        "linear: (fast) , angular: (turn left)": 76.4329188917165,
+        "linear: (fast) , angular: (hard left)": 339.82874044277185,
+        "linear: (fast) , angular: (turn right)": 205.38636623707248,
+        "linear: (fast) , angular: (hard right)": 71.23523583528882
+    },
+    "right : good\tfront : medium\torientation_forward : far\tleft : close\t": {
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
+    },
+    "right : good\tfront : medium\torientation_forward : far\tleft : far\t": {
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
+    },
+    "right : good\tfront : far\torientation_forward : close\tleft : close\t": {
+        "linear: (fast) , angular: (straight)": 0.5,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 68.49273482258849,
+        "linear: (fast) , angular: (turn right)": 1.0505,
+        "linear: (fast) , angular: (hard right)": 0.7109052484370476
+    },
+    "right : good\tfront : far\torientation_forward : close\tleft : far\t": {
+        "linear: (fast) , angular: (straight)": 367.86406714177076,
+        "linear: (fast) , angular: (turn left)": 172.58978165999082,
+        "linear: (fast) , angular: (hard left)": 345.92308124894527,
+        "linear: (fast) , angular: (turn right)": 294.0971782484167,
+        "linear: (fast) , angular: (hard right)": 214.86995281147483
+    },
+    "right : good\tfront : far\torientation_forward : far\tleft : close\t": {
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
+    },
+    "right : good\tfront : far\torientation_forward : far\tleft : far\t": {
+        "linear: (fast) , angular: (straight)": 234.17327373186217,
+        "linear: (fast) , angular: (turn left)": 21.37212244252524,
+        "linear: (fast) , angular: (hard left)": 35.60741036630456,
+        "linear: (fast) , angular: (turn right)": 364.329809177413,
+        "linear: (fast) , angular: (hard right)": 163.14126310007063
+    },
+    "right : tilted far\tfront : close\torientation_forward : close\tleft : close\t": {
+        "linear: (fast) , angular: (straight)": -13.171189226633583,
+        "linear: (fast) , angular: (turn left)": -12.301510375296802,
+        "linear: (fast) , angular: (hard left)": -12.920480269948534,
+        "linear: (fast) , angular: (turn right)": -12.0107254866397,
+        "linear: (fast) , angular: (hard right)": -12.31015193902355
+    },
+    "right : tilted far\tfront : close\torientation_forward : close\tleft : far\t": {
+        "linear: (fast) , angular: (straight)": 1.060549340684727,
+        "linear: (fast) , angular: (turn left)": -0.15294701307108194,
+        "linear: (fast) , angular: (hard left)": 0.29273377842628734,
+        "linear: (fast) , angular: (turn right)": 56.402503963210826,
+        "linear: (fast) , angular: (hard right)": -0.2837368280908029
+    },
+    "right : tilted far\tfront : close\torientation_forward : far\tleft : close\t": {
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
+    },
+    "right : tilted far\tfront : close\torientation_forward : far\tleft : far\t": {
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
+    },
+    "right : tilted far\tfront : medium\torientation_forward : close\tleft : close\t": {
+        "linear: (fast) , angular: (straight)": 41.72116896554767,
+        "linear: (fast) , angular: (turn left)": -2.592885994000299,
+        "linear: (fast) , angular: (hard left)": -1.8539635627365094,
+        "linear: (fast) , angular: (turn right)": -2.333188686350561,
+        "linear: (fast) , angular: (hard right)": -1.83797931567636
+    },
+    "right : tilted far\tfront : medium\torientation_forward : close\tleft : far\t": {
+        "linear: (fast) , angular: (straight)": 251.85782901288889,
+        "linear: (fast) , angular: (turn left)": 94.42401027349459,
+        "linear: (fast) , angular: (hard left)": 350.33472114482726,
+        "linear: (fast) , angular: (turn right)": 316.5779044732042,
+        "linear: (fast) , angular: (hard right)": 92.60452500531927
+    },
+    "right : tilted far\tfront : medium\torientation_forward : far\tleft : close\t": {
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
+    },
+    "right : tilted far\tfront : medium\torientation_forward : far\tleft : far\t": {
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
+    },
+    "right : tilted far\tfront : far\torientation_forward : close\tleft : close\t": {
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
+    },
+    "right : tilted far\tfront : far\torientation_forward : close\tleft : far\t": {
+        "linear: (fast) , angular: (straight)": 363.07967955400693,
+        "linear: (fast) , angular: (turn left)": 114.49682792003776,
+        "linear: (fast) , angular: (hard left)": 293.6808608679381,
+        "linear: (fast) , angular: (turn right)": 375.9469406719676,
+        "linear: (fast) , angular: (hard right)": 147.84810418951378
+    },
+    "right : tilted far\tfront : far\torientation_forward : far\tleft : close\t": {
+        "linear: (fast) , angular: (straight)": 0,
+        "linear: (fast) , angular: (turn left)": 0,
+        "linear: (fast) , angular: (hard left)": 0,
+        "linear: (fast) , angular: (turn right)": 0,
+        "linear: (fast) , angular: (hard right)": 0
+    },
+    "right : tilted far\tfront : far\torientation_forward : far\tleft : far\t": {
+        "linear: (fast) , angular: (straight)": 201.84697337348393,
+        "linear: (fast) , angular: (turn left)": 59.244538087273135,
+        "linear: (fast) , angular: (hard left)": 89.48948288572501,
+        "linear: (fast) , angular: (turn right)": 348.955131326056,
+        "linear: (fast) , angular: (hard right)": 151.94382473974372
+    },
+    "right : far\tfront : close\torientation_forward : close\tleft : close\t": {
+        "linear: (fast) , angular: (straight)": -7.162840063554536,
+        "linear: (fast) , angular: (turn left)": -7.714702897572305,
+        "linear: (fast) , angular: (hard left)": -7.700687395225025,
+        "linear: (fast) , angular: (turn right)": -7.267782630001675,
+        "linear: (fast) , angular: (hard right)": -7.255221720849148
+    },
+    "right : far\tfront : close\torientation_forward : close\tleft : far\t": {
+        "linear: (fast) , angular: (straight)": 1.1240337656713968,
+        "linear: (fast) , angular: (turn left)": 4.480010635276714,
+        "linear: (fast) , angular: (hard left)": 0.08605658953165163,
+        "linear: (fast) , angular: (turn right)": 0.33270277001107035,
+        "linear: (fast) , angular: (hard right)": 4.019512497071625
+    },
+    "right : far\tfront : close\torientation_forward : far\tleft : close\t": {
+        "linear: (fast) , angular: (straight)": -14.013127094447976,
+        "linear: (fast) , angular: (turn left)": -13.962638137337692,
+        "linear: (fast) , angular: (hard left)": -14.267458393300316,
+        "linear: (fast) , angular: (turn right)": -14.307175921375348,
+        "linear: (fast) , angular: (hard right)": -14.104170058080244
+    },
+    "right : far\tfront : close\torientation_forward : far\tleft : far\t": {
+        "linear: (fast) , angular: (straight)": -1.910759162797338,
+        "linear: (fast) , angular: (turn left)": -4.934843625368302,
+        "linear: (fast) , angular: (hard left)": 30.38803195477748,
+        "linear: (fast) , angular: (turn right)": -1.630833687017996,
+        "linear: (fast) , angular: (hard right)": -1.9979235614902644
+    },
+    "right : far\tfront : medium\torientation_forward : close\tleft : close\t": {
+        "linear: (fast) , angular: (straight)": -5.7631511949372,
+        "linear: (fast) , angular: (turn left)": 12.280466054534305,
+        "linear: (fast) , angular: (hard left)": -5.534808553248702,
+        "linear: (fast) , angular: (turn right)": -5.531931555324976,
+        "linear: (fast) , angular: (hard right)": -4.393054571821264
+    },
+    "right : far\tfront : medium\torientation_forward : close\tleft : far\t": {
+        "linear: (fast) , angular: (straight)": 85.50567847158511,
+        "linear: (fast) , angular: (turn left)": 30.18983048200705,
+        "linear: (fast) , angular: (hard left)": 33.551976651006164,
+        "linear: (fast) , angular: (turn right)": 21.571620644105916,
+        "linear: (fast) , angular: (hard right)": 36.05009224408841
+    },
+    "right : far\tfront : medium\torientation_forward : far\tleft : close\t": {
+        "linear: (fast) , angular: (straight)": -16.634571317242898,
+        "linear: (fast) , angular: (turn left)": -16.973277096422912,
+        "linear: (fast) , angular: (hard left)": -17.65104135853084,
+        "linear: (fast) , angular: (turn right)": -17.63337276484422,
+        "linear: (fast) , angular: (hard right)": -6.778454295681022
+    },
+    "right : far\tfront : medium\torientation_forward : far\tleft : far\t": {
+        "linear: (fast) , angular: (straight)": 17.407726589619024,
+        "linear: (fast) , angular: (turn left)": 26.16481105151252,
+        "linear: (fast) , angular: (hard left)": 15.154491036090967,
+        "linear: (fast) , angular: (turn right)": 14.569763519365768,
+        "linear: (fast) , angular: (hard right)": 15.28385105085395
+    },
+    "right : far\tfront : far\torientation_forward : close\tleft : close\t": {
+        "linear: (fast) , angular: (straight)": -0.30058252409911423,
+        "linear: (fast) , angular: (turn left)": -1.057884228721812,
+        "linear: (fast) , angular: (hard left)": -0.591641020189565,
+        "linear: (fast) , angular: (turn right)": -0.8323189292281202,
+        "linear: (fast) , angular: (hard right)": -0.5646054561486025
+    },
+    "right : far\tfront : far\torientation_forward : close\tleft : far\t": {
+        "linear: (fast) , angular: (straight)": 71.6519161389042,
+        "linear: (fast) , angular: (turn left)": 82.03032360040413,
+        "linear: (fast) , angular: (hard left)": 69.90792134995858,
+        "linear: (fast) , angular: (turn right)": 152.7175452164957,
+        "linear: (fast) , angular: (hard right)": 89.40410559030762
+    },
+    "right : far\tfront : far\torientation_forward : far\tleft : close\t": {
+        "linear: (fast) , angular: (straight)": -16.287718649785127,
+        "linear: (fast) , angular: (turn left)": -17.623309365139992,
+        "linear: (fast) , angular: (hard left)": -15.875393613008303,
+        "linear: (fast) , angular: (turn right)": -16.582288241758906,
+        "linear: (fast) , angular: (hard right)": -18.230744239957147
+    },
+    "right : far\tfront : far\torientation_forward : far\tleft : far\t": {
+        "linear: (fast) , angular: (straight)": 85.71242755885692,
+        "linear: (fast) , angular: (turn left)": 123.46147519871181,
+        "linear: (fast) , angular: (hard left)": 93.40038888192132,
+        "linear: (fast) , angular: (turn right)": 130.8276781140827,
+        "linear: (fast) , angular: (hard right)": 284.7190764660431
+    }
+}
