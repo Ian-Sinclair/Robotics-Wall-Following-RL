@@ -173,7 +173,8 @@ class q_learning() :
                         demo_rounds = 25 ,
                         plot_out_file = None, 
                         strategy = 'Temporal Difference',
-                         driving = False ) :
+                        driving = False,
+                        robot = False ) :
 
 
         #  Handles incorrect input arguments errors.
@@ -185,6 +186,7 @@ class q_learning() :
 
         #  Constructs data structure to save training plot information
         self.plot_out_file = plot_out_file
+        self.known_action_states = None
         if plot_out_file != None :
             self.record_info = {
                 'Accumulated Rewards' : 
@@ -218,12 +220,18 @@ class q_learning() :
                         'data' : [0]
                     }
             }
-        self.known_action_states = self.load_q_table_from_JSON('known_states_tracker')
+            self.known_action_states = self.load_q_table_from_JSON('known_states_tracker')
 
 
         self.out_filename = out_filename
         self.in_filename = in_filename
-
+        #  Stores relevant data from callbacks
+        self.cache = { 'scan data' : None ,
+                 'state' : None ,
+                 'action' : None ,
+                 'velocity' : None ,
+                 'incoming scan data' : None,
+                 'position' : None }
 
         #  Initializes state and action space
         self.q_table = self.init_robot_control_params()
@@ -231,38 +239,87 @@ class q_learning() :
         self.init_node()
         self.init_subscriber()
         self.init_publisher()
-        self.init_services()
-        self.unpause_physics()
 
-        rospy.on_shutdown( self.shutdown )
+        if robot == True :
+            #  Loads Q table from file if enabled
+            if type(in_filename) == type(' ') :
+                rospy.loginfo(f'loading q table from file {in_filename}')
+                self.q_table = self.load_q_table_from_JSON( in_filename )
+            
+            self.demo_robot( self.q_table )
 
-        #  Loads Q table from file if enabled
-        if type(in_filename) == type(' ') :
-            rospy.loginfo(f'loading q table from file {in_filename}')
-            self.q_table = self.load_q_table_from_JSON( in_filename )
+        else :
+            self.init_services()
+            self.unpause_physics()
 
-        #  Saves blank Q table to file if enabled
-        if out_filename != None :
-            rospy.loginfo(f'saving q table from file {in_filename}')
-            self.save_q_table_to_JSON( self.q_table , out_filename )
+            rospy.on_shutdown( self.shutdown )
 
-        #  Runs training cycle if enabled
-        if train == True :
-            rospy.loginfo(f'---------------Training Mode: {strategy}')
-            self.q_table = self.training( self.q_table , num_epocs = num_epocs, strategy= strategy )
-            rospy.loginfo(f' Training Cycle Complete: DEMOing for 25 rounds ')
-            self.demo( self.q_table , limit = 25 )
+            #  Loads Q table from file if enabled
+            if type(in_filename) == type(' ') :
+                rospy.loginfo(f'loading q table from file {in_filename}')
+                self.q_table = self.load_q_table_from_JSON( in_filename )
 
-        #  Runs testing cycle if enabled
-        if demo == True :
-            if in_filename == None :
-                rospy.logwarn(f'WARNING: Cannot load Q_table because arg: in_filename is {in_filename}.')
-                rospy.logwarn(f'WARNING: Loading Q table from::: ''best_Q_table.json'' instead.')
-                rospy.logwarn(f'WARNING: to load in Q table for demo, run, \n \
-                              \t $ rosrun wallfollowing q_learning.py --demo --in_filename <json file name>')
-                self.q_table = self.load_q_table_from_JSON('best_Q_table')
+            #  Saves blank Q table to file if enabled
+            if out_filename != None :
+                rospy.loginfo(f'saving q table from file {in_filename}')
+                self.save_q_table_to_JSON( self.q_table , out_filename )
 
-            self.demo( self.q_table , limit = demo_rounds )
+            #  Runs training cycle if enabled
+            if train == True :
+                rospy.loginfo(f'---------------Training Mode: {strategy}')
+                self.q_table = self.training( self.q_table , num_epocs = num_epocs, strategy= strategy )
+                rospy.loginfo(f' Training Cycle Complete: DEMOing for 25 rounds ')
+                self.demo( self.q_table , limit = 25 )
+
+            #  Runs testing cycle if enabled
+            if demo == True :
+                if in_filename == None :
+                    rospy.logwarn(f'WARNING: Cannot load Q_table because arg: in_filename is {in_filename}.')
+                    rospy.logwarn(f'WARNING: Loading Q table from::: ''best_Q_table.json'' instead.')
+                    rospy.logwarn(f'WARNING: to load in Q table for demo, run, \n \
+                                \t $ rosrun wallfollowing q_learning.py --demo --in_filename <json file name>')
+                    self.q_table = self.load_q_table_from_JSON('best_Q_table')
+
+                self.demo( self.q_table , limit = demo_rounds )
+
+
+
+    def demo_robot( self , q_table = None ) :
+        self.ROS_MASTER_URL = None
+        self.ROS_HOSTNAME = None
+
+        #  Wait for gazebo's first callback
+        self.cache['scan data'] = None
+        while self.cache['scan data'] == None and not rospy.is_shutdown() :
+            rospy.loginfo(f'-----Waiting for scan data-------')
+            rospy.sleep(1)
+
+        #  If no q table is given, assumes there is a none empty q table available
+        if q_table == None :
+            q_table = self.q_table
+
+        rospy.loginfo('Demo: initialized')
+
+        while not rospy.is_shutdown() :
+            #  Discretized scan data to Q table state information
+            state = self.scan_to_state(self.cache['scan data'].ranges)
+            self.cache['state'] = state
+
+
+            #  Gets the highest utility action for the robots current state
+            action = max( q_table[state], key = q_table[state].get )
+
+            #  Converts Q table action to linear and angular velocities
+            x , nz = self.actions[action]
+
+            #  Publishes linear and angular velocities as Twist object 
+            self.publish_velocity( x = x , nz = nz )
+
+            if min(self.cache['scan data'].ranges) < 0.14 :
+                rospy.loginfo(f'----Stuck:  starting unstucking procedure ------')
+                self.publish_velocity( x = 0 , nz = 0 )
+                break
+
 
 
     def init_robot_control_params( self ) :
@@ -272,13 +329,7 @@ class q_learning() :
         Returns:
             dict: Q table dictionary
         """        
-        #  Stores relevant data from callbacks
-        self.cache = { 'scan data' : None ,
-                 'state' : None ,
-                 'action' : None ,
-                 'velocity' : None ,
-                 'incoming scan data' : None,
-                 'position' : None }
+
         
         #  Desired distance from walls
         d_w = 0.5
@@ -288,13 +339,10 @@ class q_learning() :
         #  Sensor ranges in degrees for which lidar sensors to use for each direction
         #  on the robot.
         self.scan_key = {
-            'right' : [ ( 245 , 355 ) ] ,
+            'right' : [ ( 245 , 375 ) ] ,
             'front' : [ ( 0 , 30 ) , ( 330 , 359 ) ] ,
-            'orientation_forward' : [ ( 265 , 359 ) ] ,
-            #'orientation_right' : [ ( 265 , 275 ) ] ,
-            #'orientation_backward' : [ ( 200 , 210 ) ],
+            'orientation_forward' : [ ( 300 , 330 ) ] ,
             'left' : [ ( 55 , 125 ) ] ,
-            #'right_diagonal' : [ ( 180 , 210) ],
         }
 
         #  Possible places on the simulation map
@@ -310,13 +358,13 @@ class q_learning() :
 
         #  List of linear speeds
         self.linear_actions = { 'fast' : 0.2 }
-        
+
         #  List of angular speeds
         self.rotational_actions = {'straight' : 0.001 , 
-                                    'turn left' : -0.95, 
-                                    'hard left' : -1.4, 
-                                    'turn right' : 0.95, 
-                                    'hard right' : 1.4
+                                    'turn left' : 0.95, 
+                                    'hard left' : 1.4, 
+                                    'turn right' : -0.95, 
+                                    'hard right' : -1.4
                                     }
 
         #  List of all possible actions from any state
@@ -325,7 +373,7 @@ class q_learning() :
         temp = {}
         for v,w in self.actions :
             temp[f'linear: ({str(v)}) , angular: ({str(w)})'] = ( self.linear_actions[v] , self.rotational_actions[w] )
-        
+
         self.actions = temp.copy()
 
         '''
@@ -336,24 +384,15 @@ class q_learning() :
             'right' : ['close' , 'tilted close', 'good' , 'tilted far' , 'far'],
             'front' : ['close' , 'medium' , 'far'],
             'orientation_forward' : ['close' , 'far'],
-            #'orientation_right' : ['close' , 'far'],
-            #'orientation_backward' : ['close' , 'far'],
             'left' : ['close' , 'far']
-            #'right_diagonal' : ['close' , 'far'],
         }
-
         #  Sets state thresholds to discretized scan distance data.
         self.thresholds = {
-            'right' : {'close' : (0 , 0.35), 'tilted close' : (0.35 , 0.9*d_w), 'good' : (0.9*d_w , 1.1*d_w), 'tilted far' : (1.1*d_w , 1.5*d_w), 'far' : (1.5*d_w , 20)},
-            'front' : {'close' : (0 , 0.5) , 'medium' : (0.5 , 0.75) , 'far' : (0.75 , 20)},
-            'orientation_forward' : {'close' : (0,0.85) , 'far' : (0.85,20)},
-            #'orientation_right' : {'close' : (0,0.85) , 'far' : (0.85,20)},
-            #'orientation_backward' : {'close' : (0,0.85) , 'far' : (0.85,20)},
-            'left' : {'close' : (0,0.6), 'far' : (0.6,20) }
-            #'right_diagonal' : {'close' : (0 , 1) , 'far' : (1 , 20)},
+            'right' : {'close' : (0 , 0.25), 'tilted close' : (0.25 , 0.9*d_w), 'good' : (0.9*d_w , 1.1*d_w), 'tilted far' : (1.1*d_w , 1.5*d_w), 'far' : (1.5*d_w , 20)},
+            'front' : {'close' : (0 , 0.45) , 'medium' : (0.45 , 0.75) , 'far' : (0.75 , 20)},
+            'orientation_forward' : {'close' : (0,1), 'far' : (1,20) },
+            'left' : {'close' : (0,0.75), 'far' : (0.75,20) }
         }
-
-
 
                 #  Creates a blank Q table with all state/action pairs. And saves to file.
         if self.in_filename == None :
@@ -435,8 +474,10 @@ class q_learning() :
             Possibly encode state, then check if state has been updated?
             http://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/LaserScan.html
         '''
-        self.cache['scan data'] = scan
-        self.cache['incoming scan data'] = scan
+        t = scan
+        t.ranges = [float(a) if 0.1<a<3.5 else 3.5 for a in scan.ranges]
+        self.cache['scan data'] = t
+        self.cache['incoming scan data'] = t
 
 
     def cmd_vel_callback( self , data ) :
@@ -576,7 +617,7 @@ class q_learning() :
         Returns:
             float: minimum distance in interval from direction
         """        
-        scanArray = list(np.clip(scanArray , a_min=0 , a_max=3.5))
+        scanArray = list(np.clip(scanArray , a_min=0.1 , a_max=3.5))
         state_range = []
         ranges = self.scan_key[direction]
         for a,b in ranges :
@@ -607,17 +648,19 @@ class q_learning() :
             return -5
 
         #  gets distance measurements for each direction
-        x = self.get_distance(scanArray , 'right')
-        y = self.get_distance(scanArray , 'front')
-        z = self.get_distance(scanArray , 'left')
+        #x = self.get_distance(scanArray , 'right')
+        #y = self.get_distance(scanArray , 'front')
+        #z = self.get_distance(scanArray , 'left')
+        y = min( scanArray[0:30] + scanArray[330:359] )
+        x = min( scanArray[180:359] )
 
         #  the robot is a good distance from the wall on the right
         if abs(x-self.d_w) < 0.1 and y>0.5 : return 5 - action
         
         #  graduated punishment encouraging the robot to return to a good position
         fx = -5*math.sin((math.pi*(x-0.5))/6) + y - action
-        if z< 0.75 :
-            fx += - (3.5 - z)
+        #if z< 0.75 :
+        #    fx += - (3.5 - z)
         return fx
 
 
@@ -906,11 +949,12 @@ class q_learning() :
             # -----------------------------
             # -------- STEP SIZE ----------
             rospy.sleep(0.1)
+            self.init_robot_control_params()
             #  Equal to the update rate of the LiDAR scanners
             
             #  Records choice information to plots.
             direction , mod = self.is_known_state(self.cache[ 'state' ]  , self.cache[ 'action' ])
-            if random_action_flag == True :
+            if random_action_flag == False :
                 if direction != None :
                     run_info[direction]['total'] += 1
                     run_info[direction]['correct'] += mod
@@ -939,6 +983,8 @@ class q_learning() :
             action = np.random.choice( [action , 'random'] , p=[ 1-epsilon , epsilon ] )
             if action == 'random' : 
                 random_action_flag = True
+                if 'NaN' in self.softmax( q_table , state ) :
+                    print(self.softmax( q_table , state ))
                 action = np.random.choice(list(self.actions.keys()), p=self.softmax( q_table , state ) )
             
             #  Converts Q table action to linear and angular velocities
@@ -1063,12 +1109,13 @@ class q_learning() :
         timeout_limit = 10000
         
         while not rospy.is_shutdown() and count < limit :
-            rospy.sleep(0.01)
+            rospy.sleep(0.001)
             timeout += 0.1
 
             #  Discretized scan data to Q table state information
             state = self.scan_to_state(self.cache['scan data'].ranges)
             self.cache['state'] = state
+
 
             #  Gets the highest utility action for the robots current state
             action = max( q_table[state], key = q_table[state].get )
@@ -1081,6 +1128,7 @@ class q_learning() :
 
             #  Resets simulation if robot is blocked
             if self.is_blocked(self.cache['scan data'].ranges) or timeout > timeout_limit :
+                self.publish_velocity( x = 0 , nz = 0 )
                 timeout = 0
                 rospy.loginfo(f'----Resetting World-----')
                 self.reset_world()
@@ -1102,7 +1150,7 @@ class q_learning() :
         rospy.loginfo(f'-------DEMO Complete--------')
         self.shutdown()
 
-            
+
     def shutdown( self ) :
         '''
             Safe rospy shutdown
@@ -1117,7 +1165,7 @@ class q_learning() :
             NOTE! either check every lidar scanner or just the front. (right now checking everything.)
         '''
         for range in scanArray :
-            if range < 0.17 :
+            if range < 0.14 :
                 return True
         return False
 
@@ -1148,7 +1196,7 @@ class q_learning() :
                 if line_name != 'Accumulated Rewards':
                     plt.plot(plot_info[line_name]['epocs'], plot_info[line_name]['data'], linewidth=1.5, label = line_name)
             plt.legend()
-            plt.title('Correct Action Ratio Temporal Difference Learning')
+            plt.title('Correct Action Ratio Temporal Difference')
             plt.xlabel('Episode')
             plt.ylabel('Correct Actions / Total Greedy Actions')
 
@@ -1195,6 +1243,7 @@ def main( argv ) :
     demo_rounds = 25
     strategy = 'Temporal Difference'
     driving = False
+    robot = False
 
 
     ros_running = False
@@ -1210,7 +1259,7 @@ def main( argv ) :
         sys.exit(2)
 
 
-    arguments = ["--in_filename","--out_filename", "--plot_out_file", "--num_epocs", "--demo_rounds", "--train", "--demo","--SARSA", "--help", '-h']
+    arguments = ["--in_filename","--out_filename", "--plot_out_file", "--num_epocs", "--demo_rounds", "--train", "--demo","--SARSA", "--help", '--robot', '-h']
 
     if len(argv) == 0 :
         rospy.logwarn(f'ERROR: No arguments passed')
@@ -1226,7 +1275,7 @@ def main( argv ) :
 
     try :
       opts, args = getopt.getopt(argv, "h",
-                                ["in_filename=","out_filename=", "plot_out_file=", "num_epocs=", "demo_rounds=", "train", "demo", "strategy=", "drive", "help"])
+                                ["in_filename=","out_filename=", "plot_out_file=", "num_epocs=", "demo_rounds=", "robot", "train", "demo", "strategy=", "drive", "help"])
     except getopt.GetoptError:
         rospy.logerr(f'ERROR: when accepting command line arguments')
         rospy.logerr(f'------- Running Help Command -----------')
@@ -1275,7 +1324,9 @@ def main( argv ) :
             driving = True
         if opt == '--help' :
             help()
-    q_learning(out_filename,in_filename,train,num_epocs,headless,demo,demo_rounds,plot_out_file, strategy, driving)
+        if opt == '--robot' :
+            robot = True
+    q_learning(out_filename,in_filename,train,num_epocs,headless,demo,demo_rounds,plot_out_file, strategy, driving, robot)
 
 
 

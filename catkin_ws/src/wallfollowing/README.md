@@ -115,7 +115,40 @@ $ rosrun wallfollowing q_learning.py --demo --in_filename 'Test_Q_table'
 to demo the Q table you made in the previous section.
 
 
+## Connecting to the Robot (Turtlebot 3 Waffle Pi)
 
+Ensure the following is installed
+```console
+$ sudo apt-get install ros-kinetic-dynamixel-sdk
+$ sudo apt-get install ros-kinetic-turtlebot3-msgs
+$ sudo apt-get install ros-kinetic-turtlebot3
+```
+Export the waffle pi model,
+```console
+$ echo "export TURTLEBOT3_MODEL=waffle_pi" >> ~/.bashrc
+```
+
+Find your wifi IP address under inet Addr, ###.###.#.###
+```console
+$ ifconfig
+```
+
+Update ./bashrc with the correct ROS master IP
+```console
+$ nano ~/.bashrc
+```
+Source the terminal
+```console
+$ source ~/.bashrc
+```
+
+## Running on the robot
+
+After connecting to the ROS master on the robot, run the command,
+```console
+rosrun wallfollowing q_learning.py --robot --in_filename Optimal_Q_Table_SARSA
+```
+For best result, place robot near a wall before starting.
 
 ## Troubleshooting
 

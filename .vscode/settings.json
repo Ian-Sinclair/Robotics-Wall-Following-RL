@@ -1,3 +1,6 @@
 {
-    "cmake.sourceDirectory": "${workspaceFolder}/catkin_ws/src/wallfollowing"
+    "cmake.sourceDirectory": "${workspaceFolder}/catkin_ws/src/wallfollowing",
+    "cSpell.words": [
+        "unstucking"
+    ]
 }
