@@ -321,7 +321,6 @@ class q_learning() :
                 break
 
 
-
     def init_robot_control_params( self ) :
         """Initializes states and action space.
             Along with wall following parameters.
@@ -332,14 +331,14 @@ class q_learning() :
 
         
         #  Desired distance from walls
-        d_w = 0.5
+        d_w = 0.35
 
         self.d_w = d_w
 
         #  Sensor ranges in degrees for which lidar sensors to use for each direction
         #  on the robot.
         self.scan_key = {
-            'right' : [ ( 245 , 375 ) ] ,
+            'right' : [ ( 225 , 330 ) ] ,
             'front' : [ ( 0 , 30 ) , ( 330 , 359 ) ] ,
             'orientation_forward' : [ ( 300 , 330 ) ] ,
             'left' : [ ( 55 , 125 ) ] ,
@@ -348,16 +347,17 @@ class q_learning() :
         #  Possible places on the simulation map
         #  where the robot can start
         self.start_positions = [
-            (-1.7,-1.7,0 ),
-            (0,2,math.pi),
-            #(1.8,0.8,math.pi/2),
-            #(1.7,-1.7,math.pi/2),
-            #(1.8,1.8,3*math.pi/2),
-            #(-2,0.5,0)
+            (-1.7,-1.5,0 ),
+            (0,1.8,math.pi),
+            (0,2.1,math.pi),
+            (1.8,0.8,math.pi/2),
+            (1.7,-1.7,math.pi/2),
+            (1.8,1.8,3*math.pi/2),
+            (-2,0.5,0)
         ]
 
         #  List of linear speeds
-        self.linear_actions = { 'fast' : 0.2 }
+        self.linear_actions = { 'fast' : 0.1 }
 
         #  List of angular speeds
         self.rotational_actions = {'straight' : 0.001 , 
@@ -388,10 +388,10 @@ class q_learning() :
         }
         #  Sets state thresholds to discretized scan distance data.
         self.thresholds = {
-            'right' : {'close' : (0 , 0.25), 'tilted close' : (0.25 , 0.9*d_w), 'good' : (0.9*d_w , 1.1*d_w), 'tilted far' : (1.1*d_w , 1.5*d_w), 'far' : (1.5*d_w , 20)},
-            'front' : {'close' : (0 , 0.45) , 'medium' : (0.45 , 0.75) , 'far' : (0.75 , 20)},
-            'orientation_forward' : {'close' : (0,1), 'far' : (1,20) },
-            'left' : {'close' : (0,0.75), 'far' : (0.75,20) }
+            'right' : {'close' : (0 , 0.2), 'tilted close' : (0.2 , d_w - 0.1), 'good' : (d_w - 0.1 , d_w+0.2), 'tilted far' : (d_w+0.2 , 2*d_w), 'far' : (2*d_w , 20)},
+            'front' : {'close' : (0 , 0.35) , 'medium' : (0.35 , 0.75) , 'far' : (0.75 , 20)},
+            'orientation_forward' : {'close' : (0,0.6), 'far' : (0.6,20) },
+            'left' : {'close' : (0,0.85), 'far' : (0.85,20) }
         }
 
                 #  Creates a blank Q table with all state/action pairs. And saves to file.
@@ -476,6 +476,14 @@ class q_learning() :
         '''
         t = scan
         t.ranges = [float(a) if 0.1<a<3.5 else 3.5 for a in scan.ranges]
+
+        scan_range = []
+        deg = t.angle_increment * 180 / math.pi
+        deg = 360 / len(t.ranges)
+        for i in range(360) :
+            scan_range += [ t.ranges[ int( i/deg ) ] ]
+
+        t.ranges = scan_range
         self.cache['scan data'] = t
         self.cache['incoming scan data'] = t
 
@@ -652,13 +660,13 @@ class q_learning() :
         #y = self.get_distance(scanArray , 'front')
         #z = self.get_distance(scanArray , 'left')
         y = min( scanArray[0:30] + scanArray[330:359] )
-        x = min( scanArray[180:359] )
+        x = min( scanArray[225:330] )
 
         #  the robot is a good distance from the wall on the right
-        if abs(x-self.d_w) < 0.1 and y>0.5 : return 5 - action
+        if 0.25 < x < self.d_w + 0.2 and y>0.3 : return 0
         
         #  graduated punishment encouraging the robot to return to a good position
-        fx = -5*math.sin((math.pi*(x-0.5))/6) + y - action
+        fx = -5*math.sin((math.pi*(x-0.5))/6)
         #if z< 0.75 :
         #    fx += - (3.5 - z)
         return fx

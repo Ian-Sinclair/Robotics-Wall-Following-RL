@@ -54,12 +54,14 @@ CMAKE_BINARY_DIR = /home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build
 
 # The main recursive "all" target.
 all: gtest/all
+all: sair_course_project3/all
 all: wallfollowing/all
 
 .PHONY : all
 
 # The main recursive "preinstall" target.
 preinstall: gtest/preinstall
+preinstall: sair_course_project3/preinstall
 preinstall: wallfollowing/preinstall
 
 .PHONY : preinstall
@@ -71,6 +73,7 @@ clean: CMakeFiles/clean_test_results.dir/clean
 clean: CMakeFiles/tests.dir/clean
 clean: CMakeFiles/download_extra_data.dir/clean
 clean: gtest/clean
+clean: sair_course_project3/clean
 clean: wallfollowing/clean
 
 .PHONY : clean
@@ -133,6 +136,38 @@ gtest/googletest/clean: gtest/googletest/CMakeFiles/gtest.dir/clean
 .PHONY : gtest/googletest/clean
 
 #=============================================================================
+# Directory level rules for directory sair_course_project3
+
+# Recursive "all" directory target.
+sair_course_project3/all:
+
+.PHONY : sair_course_project3/all
+
+# Recursive "preinstall" directory target.
+sair_course_project3/preinstall:
+
+.PHONY : sair_course_project3/preinstall
+
+# Recursive "clean" directory target.
+sair_course_project3/clean: sair_course_project3/CMakeFiles/std_msgs_generate_messages_py.dir/clean
+sair_course_project3/clean: sair_course_project3/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
+sair_course_project3/clean: sair_course_project3/CMakeFiles/roscpp_generate_messages_cpp.dir/clean
+sair_course_project3/clean: sair_course_project3/CMakeFiles/roscpp_generate_messages_eus.dir/clean
+sair_course_project3/clean: sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/clean
+sair_course_project3/clean: sair_course_project3/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
+sair_course_project3/clean: sair_course_project3/CMakeFiles/roscpp_generate_messages_py.dir/clean
+sair_course_project3/clean: sair_course_project3/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
+sair_course_project3/clean: sair_course_project3/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean
+sair_course_project3/clean: sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean
+sair_course_project3/clean: sair_course_project3/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
+sair_course_project3/clean: sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean
+sair_course_project3/clean: sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean
+sair_course_project3/clean: sair_course_project3/CMakeFiles/roscpp_generate_messages_lisp.dir/clean
+sair_course_project3/clean: sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean
+
+.PHONY : sair_course_project3/clean
+
+#=============================================================================
 # Directory level rules for directory wallfollowing
 
 # Recursive "all" directory target.
@@ -146,21 +181,7 @@ wallfollowing/preinstall:
 .PHONY : wallfollowing/preinstall
 
 # Recursive "clean" directory target.
-wallfollowing/clean: wallfollowing/CMakeFiles/std_msgs_generate_messages_py.dir/clean
-wallfollowing/clean: wallfollowing/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
-wallfollowing/clean: wallfollowing/CMakeFiles/roscpp_generate_messages_cpp.dir/clean
-wallfollowing/clean: wallfollowing/CMakeFiles/roscpp_generate_messages_eus.dir/clean
-wallfollowing/clean: wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/clean
-wallfollowing/clean: wallfollowing/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
-wallfollowing/clean: wallfollowing/CMakeFiles/roscpp_generate_messages_py.dir/clean
-wallfollowing/clean: wallfollowing/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
-wallfollowing/clean: wallfollowing/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean
-wallfollowing/clean: wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean
-wallfollowing/clean: wallfollowing/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
-wallfollowing/clean: wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean
-wallfollowing/clean: wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean
-wallfollowing/clean: wallfollowing/CMakeFiles/roscpp_generate_messages_lisp.dir/clean
-wallfollowing/clean: wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean
+wallfollowing/clean:
 
 .PHONY : wallfollowing/clean
 
@@ -409,409 +430,409 @@ gtest/googletest/CMakeFiles/gtest.dir/clean:
 .PHONY : gtest/googletest/CMakeFiles/gtest.dir/clean
 
 #=============================================================================
-# Target rules for target wallfollowing/CMakeFiles/std_msgs_generate_messages_py.dir
+# Target rules for target sair_course_project3/CMakeFiles/std_msgs_generate_messages_py.dir
 
 # All Build rule for target.
-wallfollowing/CMakeFiles/std_msgs_generate_messages_py.dir/all:
-	$(MAKE) -f wallfollowing/CMakeFiles/std_msgs_generate_messages_py.dir/build.make wallfollowing/CMakeFiles/std_msgs_generate_messages_py.dir/depend
-	$(MAKE) -f wallfollowing/CMakeFiles/std_msgs_generate_messages_py.dir/build.make wallfollowing/CMakeFiles/std_msgs_generate_messages_py.dir/build
+sair_course_project3/CMakeFiles/std_msgs_generate_messages_py.dir/all:
+	$(MAKE) -f sair_course_project3/CMakeFiles/std_msgs_generate_messages_py.dir/build.make sair_course_project3/CMakeFiles/std_msgs_generate_messages_py.dir/depend
+	$(MAKE) -f sair_course_project3/CMakeFiles/std_msgs_generate_messages_py.dir/build.make sair_course_project3/CMakeFiles/std_msgs_generate_messages_py.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_py"
-.PHONY : wallfollowing/CMakeFiles/std_msgs_generate_messages_py.dir/all
+.PHONY : sair_course_project3/CMakeFiles/std_msgs_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
-wallfollowing/CMakeFiles/std_msgs_generate_messages_py.dir/rule: cmake_check_build_system
+sair_course_project3/CMakeFiles/std_msgs_generate_messages_py.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 wallfollowing/CMakeFiles/std_msgs_generate_messages_py.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 sair_course_project3/CMakeFiles/std_msgs_generate_messages_py.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles 0
-.PHONY : wallfollowing/CMakeFiles/std_msgs_generate_messages_py.dir/rule
+.PHONY : sair_course_project3/CMakeFiles/std_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
-std_msgs_generate_messages_py: wallfollowing/CMakeFiles/std_msgs_generate_messages_py.dir/rule
+std_msgs_generate_messages_py: sair_course_project3/CMakeFiles/std_msgs_generate_messages_py.dir/rule
 
 .PHONY : std_msgs_generate_messages_py
 
 # clean rule for target.
-wallfollowing/CMakeFiles/std_msgs_generate_messages_py.dir/clean:
-	$(MAKE) -f wallfollowing/CMakeFiles/std_msgs_generate_messages_py.dir/build.make wallfollowing/CMakeFiles/std_msgs_generate_messages_py.dir/clean
-.PHONY : wallfollowing/CMakeFiles/std_msgs_generate_messages_py.dir/clean
+sair_course_project3/CMakeFiles/std_msgs_generate_messages_py.dir/clean:
+	$(MAKE) -f sair_course_project3/CMakeFiles/std_msgs_generate_messages_py.dir/build.make sair_course_project3/CMakeFiles/std_msgs_generate_messages_py.dir/clean
+.PHONY : sair_course_project3/CMakeFiles/std_msgs_generate_messages_py.dir/clean
 
 #=============================================================================
-# Target rules for target wallfollowing/CMakeFiles/std_msgs_generate_messages_nodejs.dir
+# Target rules for target sair_course_project3/CMakeFiles/std_msgs_generate_messages_nodejs.dir
 
 # All Build rule for target.
-wallfollowing/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all:
-	$(MAKE) -f wallfollowing/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make wallfollowing/CMakeFiles/std_msgs_generate_messages_nodejs.dir/depend
-	$(MAKE) -f wallfollowing/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make wallfollowing/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build
+sair_course_project3/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all:
+	$(MAKE) -f sair_course_project3/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make sair_course_project3/CMakeFiles/std_msgs_generate_messages_nodejs.dir/depend
+	$(MAKE) -f sair_course_project3/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make sair_course_project3/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_nodejs"
-.PHONY : wallfollowing/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
+.PHONY : sair_course_project3/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
-wallfollowing/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
+sair_course_project3/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 wallfollowing/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 sair_course_project3/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles 0
-.PHONY : wallfollowing/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
+.PHONY : sair_course_project3/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-std_msgs_generate_messages_nodejs: wallfollowing/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
+std_msgs_generate_messages_nodejs: sair_course_project3/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
 
 .PHONY : std_msgs_generate_messages_nodejs
 
 # clean rule for target.
-wallfollowing/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean:
-	$(MAKE) -f wallfollowing/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make wallfollowing/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
-.PHONY : wallfollowing/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
+sair_course_project3/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean:
+	$(MAKE) -f sair_course_project3/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make sair_course_project3/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
+.PHONY : sair_course_project3/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
 
 #=============================================================================
-# Target rules for target wallfollowing/CMakeFiles/roscpp_generate_messages_cpp.dir
+# Target rules for target sair_course_project3/CMakeFiles/roscpp_generate_messages_cpp.dir
 
 # All Build rule for target.
-wallfollowing/CMakeFiles/roscpp_generate_messages_cpp.dir/all:
-	$(MAKE) -f wallfollowing/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make wallfollowing/CMakeFiles/roscpp_generate_messages_cpp.dir/depend
-	$(MAKE) -f wallfollowing/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make wallfollowing/CMakeFiles/roscpp_generate_messages_cpp.dir/build
+sair_course_project3/CMakeFiles/roscpp_generate_messages_cpp.dir/all:
+	$(MAKE) -f sair_course_project3/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make sair_course_project3/CMakeFiles/roscpp_generate_messages_cpp.dir/depend
+	$(MAKE) -f sair_course_project3/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make sair_course_project3/CMakeFiles/roscpp_generate_messages_cpp.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles --progress-num= "Built target roscpp_generate_messages_cpp"
-.PHONY : wallfollowing/CMakeFiles/roscpp_generate_messages_cpp.dir/all
+.PHONY : sair_course_project3/CMakeFiles/roscpp_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
-wallfollowing/CMakeFiles/roscpp_generate_messages_cpp.dir/rule: cmake_check_build_system
+sair_course_project3/CMakeFiles/roscpp_generate_messages_cpp.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 wallfollowing/CMakeFiles/roscpp_generate_messages_cpp.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 sair_course_project3/CMakeFiles/roscpp_generate_messages_cpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles 0
-.PHONY : wallfollowing/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
+.PHONY : sair_course_project3/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-roscpp_generate_messages_cpp: wallfollowing/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
+roscpp_generate_messages_cpp: sair_course_project3/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
 
 .PHONY : roscpp_generate_messages_cpp
 
 # clean rule for target.
-wallfollowing/CMakeFiles/roscpp_generate_messages_cpp.dir/clean:
-	$(MAKE) -f wallfollowing/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make wallfollowing/CMakeFiles/roscpp_generate_messages_cpp.dir/clean
-.PHONY : wallfollowing/CMakeFiles/roscpp_generate_messages_cpp.dir/clean
+sair_course_project3/CMakeFiles/roscpp_generate_messages_cpp.dir/clean:
+	$(MAKE) -f sair_course_project3/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make sair_course_project3/CMakeFiles/roscpp_generate_messages_cpp.dir/clean
+.PHONY : sair_course_project3/CMakeFiles/roscpp_generate_messages_cpp.dir/clean
 
 #=============================================================================
-# Target rules for target wallfollowing/CMakeFiles/roscpp_generate_messages_eus.dir
+# Target rules for target sair_course_project3/CMakeFiles/roscpp_generate_messages_eus.dir
 
 # All Build rule for target.
-wallfollowing/CMakeFiles/roscpp_generate_messages_eus.dir/all:
-	$(MAKE) -f wallfollowing/CMakeFiles/roscpp_generate_messages_eus.dir/build.make wallfollowing/CMakeFiles/roscpp_generate_messages_eus.dir/depend
-	$(MAKE) -f wallfollowing/CMakeFiles/roscpp_generate_messages_eus.dir/build.make wallfollowing/CMakeFiles/roscpp_generate_messages_eus.dir/build
+sair_course_project3/CMakeFiles/roscpp_generate_messages_eus.dir/all:
+	$(MAKE) -f sair_course_project3/CMakeFiles/roscpp_generate_messages_eus.dir/build.make sair_course_project3/CMakeFiles/roscpp_generate_messages_eus.dir/depend
+	$(MAKE) -f sair_course_project3/CMakeFiles/roscpp_generate_messages_eus.dir/build.make sair_course_project3/CMakeFiles/roscpp_generate_messages_eus.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles --progress-num= "Built target roscpp_generate_messages_eus"
-.PHONY : wallfollowing/CMakeFiles/roscpp_generate_messages_eus.dir/all
+.PHONY : sair_course_project3/CMakeFiles/roscpp_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
-wallfollowing/CMakeFiles/roscpp_generate_messages_eus.dir/rule: cmake_check_build_system
+sair_course_project3/CMakeFiles/roscpp_generate_messages_eus.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 wallfollowing/CMakeFiles/roscpp_generate_messages_eus.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 sair_course_project3/CMakeFiles/roscpp_generate_messages_eus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles 0
-.PHONY : wallfollowing/CMakeFiles/roscpp_generate_messages_eus.dir/rule
+.PHONY : sair_course_project3/CMakeFiles/roscpp_generate_messages_eus.dir/rule
 
 # Convenience name for target.
-roscpp_generate_messages_eus: wallfollowing/CMakeFiles/roscpp_generate_messages_eus.dir/rule
+roscpp_generate_messages_eus: sair_course_project3/CMakeFiles/roscpp_generate_messages_eus.dir/rule
 
 .PHONY : roscpp_generate_messages_eus
 
 # clean rule for target.
-wallfollowing/CMakeFiles/roscpp_generate_messages_eus.dir/clean:
-	$(MAKE) -f wallfollowing/CMakeFiles/roscpp_generate_messages_eus.dir/build.make wallfollowing/CMakeFiles/roscpp_generate_messages_eus.dir/clean
-.PHONY : wallfollowing/CMakeFiles/roscpp_generate_messages_eus.dir/clean
+sair_course_project3/CMakeFiles/roscpp_generate_messages_eus.dir/clean:
+	$(MAKE) -f sair_course_project3/CMakeFiles/roscpp_generate_messages_eus.dir/build.make sair_course_project3/CMakeFiles/roscpp_generate_messages_eus.dir/clean
+.PHONY : sair_course_project3/CMakeFiles/roscpp_generate_messages_eus.dir/clean
 
 #=============================================================================
-# Target rules for target wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir
+# Target rules for target sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir
 
 # All Build rule for target.
-wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/all:
-	$(MAKE) -f wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/depend
-	$(MAKE) -f wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build
+sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/all:
+	$(MAKE) -f sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/depend
+	$(MAKE) -f sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles --progress-num= "Built target rosgraph_msgs_generate_messages_nodejs"
-.PHONY : wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/all
+.PHONY : sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
-wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
+sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles 0
-.PHONY : wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
+.PHONY : sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-rosgraph_msgs_generate_messages_nodejs: wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
+rosgraph_msgs_generate_messages_nodejs: sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
 
 .PHONY : rosgraph_msgs_generate_messages_nodejs
 
 # clean rule for target.
-wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/clean:
-	$(MAKE) -f wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/clean
-.PHONY : wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/clean
+sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/clean:
+	$(MAKE) -f sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/clean
+.PHONY : sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/clean
 
 #=============================================================================
-# Target rules for target wallfollowing/CMakeFiles/std_msgs_generate_messages_lisp.dir
+# Target rules for target sair_course_project3/CMakeFiles/std_msgs_generate_messages_lisp.dir
 
 # All Build rule for target.
-wallfollowing/CMakeFiles/std_msgs_generate_messages_lisp.dir/all:
-	$(MAKE) -f wallfollowing/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make wallfollowing/CMakeFiles/std_msgs_generate_messages_lisp.dir/depend
-	$(MAKE) -f wallfollowing/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make wallfollowing/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
+sair_course_project3/CMakeFiles/std_msgs_generate_messages_lisp.dir/all:
+	$(MAKE) -f sair_course_project3/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make sair_course_project3/CMakeFiles/std_msgs_generate_messages_lisp.dir/depend
+	$(MAKE) -f sair_course_project3/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make sair_course_project3/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_lisp"
-.PHONY : wallfollowing/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
+.PHONY : sair_course_project3/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
-wallfollowing/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
+sair_course_project3/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 wallfollowing/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 sair_course_project3/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles 0
-.PHONY : wallfollowing/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
+.PHONY : sair_course_project3/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
-std_msgs_generate_messages_lisp: wallfollowing/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
+std_msgs_generate_messages_lisp: sair_course_project3/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
 
 .PHONY : std_msgs_generate_messages_lisp
 
 # clean rule for target.
-wallfollowing/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean:
-	$(MAKE) -f wallfollowing/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make wallfollowing/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
-.PHONY : wallfollowing/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
+sair_course_project3/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean:
+	$(MAKE) -f sair_course_project3/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make sair_course_project3/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
+.PHONY : sair_course_project3/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
 
 #=============================================================================
-# Target rules for target wallfollowing/CMakeFiles/roscpp_generate_messages_py.dir
+# Target rules for target sair_course_project3/CMakeFiles/roscpp_generate_messages_py.dir
 
 # All Build rule for target.
-wallfollowing/CMakeFiles/roscpp_generate_messages_py.dir/all:
-	$(MAKE) -f wallfollowing/CMakeFiles/roscpp_generate_messages_py.dir/build.make wallfollowing/CMakeFiles/roscpp_generate_messages_py.dir/depend
-	$(MAKE) -f wallfollowing/CMakeFiles/roscpp_generate_messages_py.dir/build.make wallfollowing/CMakeFiles/roscpp_generate_messages_py.dir/build
+sair_course_project3/CMakeFiles/roscpp_generate_messages_py.dir/all:
+	$(MAKE) -f sair_course_project3/CMakeFiles/roscpp_generate_messages_py.dir/build.make sair_course_project3/CMakeFiles/roscpp_generate_messages_py.dir/depend
+	$(MAKE) -f sair_course_project3/CMakeFiles/roscpp_generate_messages_py.dir/build.make sair_course_project3/CMakeFiles/roscpp_generate_messages_py.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles --progress-num= "Built target roscpp_generate_messages_py"
-.PHONY : wallfollowing/CMakeFiles/roscpp_generate_messages_py.dir/all
+.PHONY : sair_course_project3/CMakeFiles/roscpp_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
-wallfollowing/CMakeFiles/roscpp_generate_messages_py.dir/rule: cmake_check_build_system
+sair_course_project3/CMakeFiles/roscpp_generate_messages_py.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 wallfollowing/CMakeFiles/roscpp_generate_messages_py.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 sair_course_project3/CMakeFiles/roscpp_generate_messages_py.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles 0
-.PHONY : wallfollowing/CMakeFiles/roscpp_generate_messages_py.dir/rule
+.PHONY : sair_course_project3/CMakeFiles/roscpp_generate_messages_py.dir/rule
 
 # Convenience name for target.
-roscpp_generate_messages_py: wallfollowing/CMakeFiles/roscpp_generate_messages_py.dir/rule
+roscpp_generate_messages_py: sair_course_project3/CMakeFiles/roscpp_generate_messages_py.dir/rule
 
 .PHONY : roscpp_generate_messages_py
 
 # clean rule for target.
-wallfollowing/CMakeFiles/roscpp_generate_messages_py.dir/clean:
-	$(MAKE) -f wallfollowing/CMakeFiles/roscpp_generate_messages_py.dir/build.make wallfollowing/CMakeFiles/roscpp_generate_messages_py.dir/clean
-.PHONY : wallfollowing/CMakeFiles/roscpp_generate_messages_py.dir/clean
+sair_course_project3/CMakeFiles/roscpp_generate_messages_py.dir/clean:
+	$(MAKE) -f sair_course_project3/CMakeFiles/roscpp_generate_messages_py.dir/build.make sair_course_project3/CMakeFiles/roscpp_generate_messages_py.dir/clean
+.PHONY : sair_course_project3/CMakeFiles/roscpp_generate_messages_py.dir/clean
 
 #=============================================================================
-# Target rules for target wallfollowing/CMakeFiles/std_msgs_generate_messages_eus.dir
+# Target rules for target sair_course_project3/CMakeFiles/std_msgs_generate_messages_eus.dir
 
 # All Build rule for target.
-wallfollowing/CMakeFiles/std_msgs_generate_messages_eus.dir/all:
-	$(MAKE) -f wallfollowing/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make wallfollowing/CMakeFiles/std_msgs_generate_messages_eus.dir/depend
-	$(MAKE) -f wallfollowing/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make wallfollowing/CMakeFiles/std_msgs_generate_messages_eus.dir/build
+sair_course_project3/CMakeFiles/std_msgs_generate_messages_eus.dir/all:
+	$(MAKE) -f sair_course_project3/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make sair_course_project3/CMakeFiles/std_msgs_generate_messages_eus.dir/depend
+	$(MAKE) -f sair_course_project3/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make sair_course_project3/CMakeFiles/std_msgs_generate_messages_eus.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_eus"
-.PHONY : wallfollowing/CMakeFiles/std_msgs_generate_messages_eus.dir/all
+.PHONY : sair_course_project3/CMakeFiles/std_msgs_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
-wallfollowing/CMakeFiles/std_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
+sair_course_project3/CMakeFiles/std_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 wallfollowing/CMakeFiles/std_msgs_generate_messages_eus.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 sair_course_project3/CMakeFiles/std_msgs_generate_messages_eus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles 0
-.PHONY : wallfollowing/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
+.PHONY : sair_course_project3/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
 
 # Convenience name for target.
-std_msgs_generate_messages_eus: wallfollowing/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
+std_msgs_generate_messages_eus: sair_course_project3/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
 
 .PHONY : std_msgs_generate_messages_eus
 
 # clean rule for target.
-wallfollowing/CMakeFiles/std_msgs_generate_messages_eus.dir/clean:
-	$(MAKE) -f wallfollowing/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make wallfollowing/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
-.PHONY : wallfollowing/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
+sair_course_project3/CMakeFiles/std_msgs_generate_messages_eus.dir/clean:
+	$(MAKE) -f sair_course_project3/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make sair_course_project3/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
+.PHONY : sair_course_project3/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
 
 #=============================================================================
-# Target rules for target wallfollowing/CMakeFiles/roscpp_generate_messages_nodejs.dir
+# Target rules for target sair_course_project3/CMakeFiles/roscpp_generate_messages_nodejs.dir
 
 # All Build rule for target.
-wallfollowing/CMakeFiles/roscpp_generate_messages_nodejs.dir/all:
-	$(MAKE) -f wallfollowing/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make wallfollowing/CMakeFiles/roscpp_generate_messages_nodejs.dir/depend
-	$(MAKE) -f wallfollowing/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make wallfollowing/CMakeFiles/roscpp_generate_messages_nodejs.dir/build
+sair_course_project3/CMakeFiles/roscpp_generate_messages_nodejs.dir/all:
+	$(MAKE) -f sair_course_project3/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make sair_course_project3/CMakeFiles/roscpp_generate_messages_nodejs.dir/depend
+	$(MAKE) -f sair_course_project3/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make sair_course_project3/CMakeFiles/roscpp_generate_messages_nodejs.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles --progress-num= "Built target roscpp_generate_messages_nodejs"
-.PHONY : wallfollowing/CMakeFiles/roscpp_generate_messages_nodejs.dir/all
+.PHONY : sair_course_project3/CMakeFiles/roscpp_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
-wallfollowing/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule: cmake_check_build_system
+sair_course_project3/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 wallfollowing/CMakeFiles/roscpp_generate_messages_nodejs.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 sair_course_project3/CMakeFiles/roscpp_generate_messages_nodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles 0
-.PHONY : wallfollowing/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
+.PHONY : sair_course_project3/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-roscpp_generate_messages_nodejs: wallfollowing/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
+roscpp_generate_messages_nodejs: sair_course_project3/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
 
 .PHONY : roscpp_generate_messages_nodejs
 
 # clean rule for target.
-wallfollowing/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean:
-	$(MAKE) -f wallfollowing/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make wallfollowing/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean
-.PHONY : wallfollowing/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean
+sair_course_project3/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean:
+	$(MAKE) -f sair_course_project3/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make sair_course_project3/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean
+.PHONY : sair_course_project3/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean
 
 #=============================================================================
-# Target rules for target wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir
+# Target rules for target sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir
 
 # All Build rule for target.
-wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all:
-	$(MAKE) -f wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/depend
-	$(MAKE) -f wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
+sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all:
+	$(MAKE) -f sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/depend
+	$(MAKE) -f sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles --progress-num= "Built target rosgraph_msgs_generate_messages_cpp"
-.PHONY : wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
+.PHONY : sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
-wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
+sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles 0
-.PHONY : wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+.PHONY : sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-rosgraph_msgs_generate_messages_cpp: wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+rosgraph_msgs_generate_messages_cpp: sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
 
 .PHONY : rosgraph_msgs_generate_messages_cpp
 
 # clean rule for target.
-wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean:
-	$(MAKE) -f wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean
-.PHONY : wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean
+sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean:
+	$(MAKE) -f sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean
+.PHONY : sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean
 
 #=============================================================================
-# Target rules for target wallfollowing/CMakeFiles/std_msgs_generate_messages_cpp.dir
+# Target rules for target sair_course_project3/CMakeFiles/std_msgs_generate_messages_cpp.dir
 
 # All Build rule for target.
-wallfollowing/CMakeFiles/std_msgs_generate_messages_cpp.dir/all:
-	$(MAKE) -f wallfollowing/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make wallfollowing/CMakeFiles/std_msgs_generate_messages_cpp.dir/depend
-	$(MAKE) -f wallfollowing/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make wallfollowing/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
+sair_course_project3/CMakeFiles/std_msgs_generate_messages_cpp.dir/all:
+	$(MAKE) -f sair_course_project3/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make sair_course_project3/CMakeFiles/std_msgs_generate_messages_cpp.dir/depend
+	$(MAKE) -f sair_course_project3/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make sair_course_project3/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_cpp"
-.PHONY : wallfollowing/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
+.PHONY : sair_course_project3/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
-wallfollowing/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
+sair_course_project3/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 wallfollowing/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 sair_course_project3/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles 0
-.PHONY : wallfollowing/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
+.PHONY : sair_course_project3/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-std_msgs_generate_messages_cpp: wallfollowing/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
+std_msgs_generate_messages_cpp: sair_course_project3/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
 
 .PHONY : std_msgs_generate_messages_cpp
 
 # clean rule for target.
-wallfollowing/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean:
-	$(MAKE) -f wallfollowing/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make wallfollowing/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
-.PHONY : wallfollowing/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
+sair_course_project3/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean:
+	$(MAKE) -f sair_course_project3/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make sair_course_project3/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
+.PHONY : sair_course_project3/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
 
 #=============================================================================
-# Target rules for target wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir
+# Target rules for target sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir
 
 # All Build rule for target.
-wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/all:
-	$(MAKE) -f wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/depend
-	$(MAKE) -f wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build
+sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/all:
+	$(MAKE) -f sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/depend
+	$(MAKE) -f sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles --progress-num= "Built target rosgraph_msgs_generate_messages_eus"
-.PHONY : wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/all
+.PHONY : sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
-wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
+sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles 0
-.PHONY : wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
+.PHONY : sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
 
 # Convenience name for target.
-rosgraph_msgs_generate_messages_eus: wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
+rosgraph_msgs_generate_messages_eus: sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
 
 .PHONY : rosgraph_msgs_generate_messages_eus
 
 # clean rule for target.
-wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean:
-	$(MAKE) -f wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean
-.PHONY : wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean
+sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean:
+	$(MAKE) -f sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean
+.PHONY : sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean
 
 #=============================================================================
-# Target rules for target wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir
+# Target rules for target sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir
 
 # All Build rule for target.
-wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/all:
-	$(MAKE) -f wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/depend
-	$(MAKE) -f wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
+sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/all:
+	$(MAKE) -f sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/depend
+	$(MAKE) -f sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles --progress-num= "Built target rosgraph_msgs_generate_messages_lisp"
-.PHONY : wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/all
+.PHONY : sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
-wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
+sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles 0
-.PHONY : wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
+.PHONY : sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
-rosgraph_msgs_generate_messages_lisp: wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
+rosgraph_msgs_generate_messages_lisp: sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
 
 .PHONY : rosgraph_msgs_generate_messages_lisp
 
 # clean rule for target.
-wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean:
-	$(MAKE) -f wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean
-.PHONY : wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean
+sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean:
+	$(MAKE) -f sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean
+.PHONY : sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean
 
 #=============================================================================
-# Target rules for target wallfollowing/CMakeFiles/roscpp_generate_messages_lisp.dir
+# Target rules for target sair_course_project3/CMakeFiles/roscpp_generate_messages_lisp.dir
 
 # All Build rule for target.
-wallfollowing/CMakeFiles/roscpp_generate_messages_lisp.dir/all:
-	$(MAKE) -f wallfollowing/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make wallfollowing/CMakeFiles/roscpp_generate_messages_lisp.dir/depend
-	$(MAKE) -f wallfollowing/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make wallfollowing/CMakeFiles/roscpp_generate_messages_lisp.dir/build
+sair_course_project3/CMakeFiles/roscpp_generate_messages_lisp.dir/all:
+	$(MAKE) -f sair_course_project3/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make sair_course_project3/CMakeFiles/roscpp_generate_messages_lisp.dir/depend
+	$(MAKE) -f sair_course_project3/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make sair_course_project3/CMakeFiles/roscpp_generate_messages_lisp.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles --progress-num= "Built target roscpp_generate_messages_lisp"
-.PHONY : wallfollowing/CMakeFiles/roscpp_generate_messages_lisp.dir/all
+.PHONY : sair_course_project3/CMakeFiles/roscpp_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
-wallfollowing/CMakeFiles/roscpp_generate_messages_lisp.dir/rule: cmake_check_build_system
+sair_course_project3/CMakeFiles/roscpp_generate_messages_lisp.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 wallfollowing/CMakeFiles/roscpp_generate_messages_lisp.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 sair_course_project3/CMakeFiles/roscpp_generate_messages_lisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles 0
-.PHONY : wallfollowing/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
+.PHONY : sair_course_project3/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
-roscpp_generate_messages_lisp: wallfollowing/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
+roscpp_generate_messages_lisp: sair_course_project3/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
 
 .PHONY : roscpp_generate_messages_lisp
 
 # clean rule for target.
-wallfollowing/CMakeFiles/roscpp_generate_messages_lisp.dir/clean:
-	$(MAKE) -f wallfollowing/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make wallfollowing/CMakeFiles/roscpp_generate_messages_lisp.dir/clean
-.PHONY : wallfollowing/CMakeFiles/roscpp_generate_messages_lisp.dir/clean
+sair_course_project3/CMakeFiles/roscpp_generate_messages_lisp.dir/clean:
+	$(MAKE) -f sair_course_project3/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make sair_course_project3/CMakeFiles/roscpp_generate_messages_lisp.dir/clean
+.PHONY : sair_course_project3/CMakeFiles/roscpp_generate_messages_lisp.dir/clean
 
 #=============================================================================
-# Target rules for target wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_py.dir
+# Target rules for target sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_py.dir
 
 # All Build rule for target.
-wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all:
-	$(MAKE) -f wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/depend
-	$(MAKE) -f wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
+sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all:
+	$(MAKE) -f sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/depend
+	$(MAKE) -f sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles --progress-num= "Built target rosgraph_msgs_generate_messages_py"
-.PHONY : wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all
+.PHONY : sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
-wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule: cmake_check_build_system
+sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/CMakeFiles 0
-.PHONY : wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
+.PHONY : sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
-rosgraph_msgs_generate_messages_py: wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
+rosgraph_msgs_generate_messages_py: sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
 
 .PHONY : rosgraph_msgs_generate_messages_py
 
 # clean rule for target.
-wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean:
-	$(MAKE) -f wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean
-.PHONY : wallfollowing/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean
+sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean:
+	$(MAKE) -f sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean
+.PHONY : sair_course_project3/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

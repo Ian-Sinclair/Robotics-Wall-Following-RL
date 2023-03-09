@@ -1,0 +1,8 @@
+prefix=/home/iansinclair/github/COMP-4510-Project-3/catkin_ws/devel
+
+Name: sair_course_project3
+Description: Description of sair_course_project3
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

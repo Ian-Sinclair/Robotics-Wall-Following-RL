@@ -1,2 +1,2 @@
-wallfollowing
+sair_course_project3:wallfollowing
 -DCATKIN_DEVEL_PREFIX=/home/iansinclair/github/COMP-4510-Project-3/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/iansinclair/github/COMP-4510-Project-3/catkin_ws/install -G Unix Makefiles

@@ -131,6 +131,7 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/gtest/cmake_install.cmake")
+  include("/home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/sair_course_project3/cmake_install.cmake")
   include("/home/iansinclair/github/COMP-4510-Project-3/catkin_ws/build/wallfollowing/cmake_install.cmake")
 
 endif()
