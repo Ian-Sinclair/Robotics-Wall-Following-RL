@@ -275,13 +275,12 @@ class q_learning() :
             if demo == True :
                 if in_filename == None :
                     rospy.logwarn(f'WARNING: Cannot load Q_table because arg: in_filename is {in_filename}.')
-                    rospy.logwarn(f'WARNING: Loading Q table from::: ''best_Q_table.json'' instead.')
+                    rospy.logwarn(f'WARNING: Loading Q table from::: ''Optimal_Q_Table_SARSA.json'' instead.')
                     rospy.logwarn(f'WARNING: to load in Q table for demo, run, \n \
                                 \t $ rosrun wallfollowing q_learning.py --demo --in_filename <json file name>')
-                    self.q_table = self.load_q_table_from_JSON('best_Q_table')
+                    self.q_table = self.load_q_table_from_JSON('Optimal_Q_Table_SARSA')
 
                 self.demo( self.q_table , limit = demo_rounds )
-
 
 
     def demo_robot( self , q_table = None ) :
@@ -656,19 +655,15 @@ class q_learning() :
             return -5
 
         #  gets distance measurements for each direction
-        #x = self.get_distance(scanArray , 'right')
-        #y = self.get_distance(scanArray , 'front')
-        #z = self.get_distance(scanArray , 'left')
         y = min( scanArray[0:30] + scanArray[330:359] )
         x = min( scanArray[225:330] )
 
         #  the robot is a good distance from the wall on the right
-        if 0.25 < x < self.d_w + 0.2 and y>0.3 : return 0
+        if 0.25 < x < self.d_w + 0.2 and y>0.3 : return -action
         
         #  graduated punishment encouraging the robot to return to a good position
-        fx = -5*math.sin((math.pi*(x-0.5))/6)
-        #if z< 0.75 :
-        #    fx += - (3.5 - z)
+        fx = -5*math.sin((math.pi*(x-0.5))/6) - action
+
         return fx
 
 
@@ -942,7 +937,8 @@ class q_learning() :
         crash_queue = [(state,action,self.cache['position'])]
 
         #  Publishes linear and angular velocities as Twist object 
-        self.publish_velocity( x = x , nz = nz )
+        #  Velocities are randomly perturbed in accordance with domain randomization
+        self.publish_velocity( x = x + 0.01*random.Random() , nz = nz+0.1*random.Random() )
 
         #  Sets terminating conditions for robot. 
         repeat_limit = 1000
@@ -1015,7 +1011,8 @@ class q_learning() :
             self.cache[ 'action' ] = action
 
             #  Publishes linear and angular velocities as Twist object 
-            self.publish_velocity( x = x , nz = nz )
+            #  Velocities are randomly perturbed in accordance with domain randomization
+            self.publish_velocity( x = x + 0.01*random.Random() , nz = nz+0.1*random.Random() )
             
 
             #  Checks terminating condition for colliding with walls

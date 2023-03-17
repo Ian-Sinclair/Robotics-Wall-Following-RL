@@ -127,20 +127,43 @@ Export the waffle pi model,
 ```console
 $ echo "export TURTLEBOT3_MODEL=waffle_pi" >> ~/.bashrc
 ```
-
+SSH into the robot in its own terminal.
+```console
+ssh ubuntu@192.168.9.{Robot Number}
+```
+Or turtlebot 1 and 2,
+```console
+ssh pi@192.168.9.{Robot Number}
+```
+Next, run the bring up software,
+```console
+$ roslaunch turtlebot3_bringup turtlebot3_robot.launch
+```
+In a new terminal  
 Find your wifi IP address under inet Addr, ###.###.#.###
 ```console
 $ ifconfig
 ```
-
 Update ./bashrc with the correct ROS master IP
 ```console
-$ nano ~/.bashrc
+$ vim ~/.bashrc
 ```
-Source the terminal
+The last line has the form,
+```console
+export ROS_MASTER_URI=http://192.168.9.{Robot Number}:11311
+export ROS_HOSTNAME={Your Computers Host IP}
+```
+For help with vim, see the help with vim section.  
+After updating and saving ~/.bashrc, source the terminal
 ```console
 $ source ~/.bashrc
 ```
+You can try to teleop the robot with,
+```console
+roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+```
+Or run the navigation software by following the next section.
+
 
 ## Running on the robot
 
@@ -157,3 +180,14 @@ It is likely you will need to resource every terminal you enter.
 $ cd catkin_ws
 $ source devel/setup.bash
 ```
+
+## Help With VIM
+
+Start by entering insert mode by pressing 'I'.  
+Make the necessary changes to the document.  
+To save, press,  
+'esc'  
+':'  
+'wq'  
+Then press 'enter'  
+The document is now saved, don't forget to resource the terminal after.
