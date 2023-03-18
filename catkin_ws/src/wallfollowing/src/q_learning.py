@@ -346,13 +346,13 @@ class q_learning() :
         #  Possible places on the simulation map
         #  where the robot can start
         self.start_positions = [
-            (-1.7,-1.5,0 ),
-            (0,1.8,math.pi),
-            (0,2.1,math.pi),
-            (1.8,0.8,math.pi/2),
+            #(-1.7,-1.5,0 ),
+            #(0,1.8,math.pi),
+            #(0,2.1,math.pi),
+            #(1.8,0.8,math.pi/2),
             (1.7,-1.7,math.pi/2),
-            (1.8,1.8,3*math.pi/2),
-            (-2,0.5,0)
+            #(1.8,1.8,3*math.pi/2),
+            #(-2,0.5,0)
         ]
 
         #  List of linear speeds
@@ -938,7 +938,7 @@ class q_learning() :
 
         #  Publishes linear and angular velocities as Twist object 
         #  Velocities are randomly perturbed in accordance with domain randomization
-        self.publish_velocity( x = x + 0.01*random.Random() , nz = nz+0.1*random.Random() )
+        self.publish_velocity( x = x + 0.01*random.uniform(0,1) , nz = nz+0.1*random.uniform(0,1) )
 
         #  Sets terminating conditions for robot. 
         repeat_limit = 1000
@@ -957,11 +957,12 @@ class q_learning() :
             #  Equal to the update rate of the LiDAR scanners
             
             #  Records choice information to plots.
-            direction , mod = self.is_known_state(self.cache[ 'state' ]  , self.cache[ 'action' ])
-            if random_action_flag == False :
-                if direction != None :
-                    run_info[direction]['total'] += 1
-                    run_info[direction]['correct'] += mod
+            if self.known_action_states != None :
+                direction , mod = self.is_known_state(self.cache[ 'state' ]  , self.cache[ 'action' ])
+                if random_action_flag == False :
+                    if direction != None :
+                        run_info[direction]['total'] += 1
+                        run_info[direction]['correct'] += mod
 
             #  Discretized scan data to Q table state information
             new_state = self.scan_to_state(self.cache['scan data'].ranges)
@@ -1012,7 +1013,7 @@ class q_learning() :
 
             #  Publishes linear and angular velocities as Twist object 
             #  Velocities are randomly perturbed in accordance with domain randomization
-            self.publish_velocity( x = x + 0.01*random.Random() , nz = nz+0.1*random.Random() )
+            self.publish_velocity( x = x + 0.01*random.uniform(0,1) , nz = nz+0.1*random.uniform(0,1) )
             
 
             #  Checks terminating condition for colliding with walls
@@ -1232,8 +1233,8 @@ def help() :
         --demo_rounds\t <number of trails in demo>')
     rospy.logwarn(f'\n EXAMPLE: \n \
                 \t $ rosrun wallfollowing q_learning.py --train --out_filename test_table_name --num_epocs=10\n \
-                \t $ rosrun wallfollowing q_learning.py --demo --in_filename best_Q_table --demo_rounds=10\n')
-    sys.exit(2)
+                \t $ rosrun wallfollowing q_learning.py --demo --in_filename Optimal_Q_Table_SARSA --demo_rounds=10\n')
+    sys.exit()
 
 
 
