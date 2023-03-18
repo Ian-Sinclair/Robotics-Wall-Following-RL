@@ -1,8 +1,0 @@
-prefix=/home/iansinclair/github/COMP-4510-Project-3/catkin_ws/devel
-
-Name: wallfollowing
-Description: Description of wallfollowing
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 
