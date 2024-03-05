@@ -1,141 +1,151 @@
 # Robotics - Reinforcement Learning: Wall Following
 
+## Summary
 
-## Abstract
+This project explores the application of reinforcement learning algorithms to teach an autonomous mobile robot the task of following walls and avoiding obstacles in a fixed simulated environment. The primary goal is to develop an optimal policy that allows the robot to maintain a desired distance from walls while navigating efficiently and without crashing. The project focuses on two main reinforcement learning algorithms: Q-learning and SARSA. The robot's environment, state space, action space, reward function, and learning strategy are carefully designed and implemented. Evaluation metrics include learning convergence rate and accuracy, assessed through experiments conducted over multiple episodes. The results provide insights into the effectiveness of the learning algorithms and their ability to train the robot for successful wall-following behavior.
 
-Reinforcement learning algorithms are used to teach
-an autonomous mobile robot to follow walls and avoid obstacles in
-a fixed simulated environment. This involves learning an optimal
-mapping from states to control actions that allows the robot to
-maintain a fixed distance to walls without crashing. An optimal
-policy can be formally described by the statement, if at time t the
-robot is at a desired distance from a wall, dw , then at time t + 1,
-this distance is maintained while continuously moving forward
-and without crashing. Generally, a policy is preferred if it induces
-the robot to cover more distance along the wall in less time.
-Two strategies are employed, being off-policy temporal difference
-learning (Q-learning) and on-policy SARSA. The effectiveness of
-either strategy is determined by the learning convergence rate
-and accuracy (episodes vs. correct actions)
+<div style="text-align:center;">
+  <img src="misc/images/demo.gif" alt="Turtle Bot Navigation Demo" width="60%">
+</div>
 
-## Demo
+## Watch The Full Demo
 
 Demo of turtlebot navigating the circumfrence of it's environment, along with training cycles for Q-learning and SARSA.
 
-[![Watch the video](misc/images/demo_thumbnail.png)](https://youtu.be/Ce2aRc1InvM)
+<div style="text-align:center;">
+  <a href="https://youtu.be/Ce2aRc1InvM" target="_blank"><img src="misc/images/demo_thumbnail.png" width="30%"></a>
+</div>
 
-## Summary
+Full report can be found in [reports/RL_For_Wall_Following_Report.pdf](reports/RL_For_Wall_Following_Report.pdf)
 
-Considered is a navigation problem that allows an au-
-tonomous agent to target its control strategy by its local
-surroundings. Wall following constitutes having the robot
-move along the circumference of its environment without
-crashing. In addition, a robot that covers greater portions of the
-wall faster is considered better. And correspondingly, there is a
-balance between moving quickly vs moving safely. If the robot
-is too close to the wall it will likely crash, vs too far away it
-will lose the topology of the wall and get lost.
+## Problem Formalism
 
-To simplify the learning problem, a single static environ-
-ment is used during training. This is in contrast to a stochastic
-environment commonly used during generalizable reinforce-
-ment learning models.
+Wall following, a fundamental behavior in mobile robotics, requires the robot to circumnavigate its environment while adhering to the topology of the surrounding walls. Successful wall following involves striking a delicate balance between speed and safety: moving too close to the wall risks collisions, while straying too far may lead to disorientation and loss of navigation reference.
 
-<img src="misc/images/envImage.png" alt="drawing" width="50%"/>
+The navigation task is formalized as follows: the robot is tasked with continuously moving forward while keeping a desired distance, $d_w$, from adjacent walls. This desired distance serves as a critical parameter, ensuring the robot maintains a balance between proximity to walls for efficient traversal and distance to prevent collisions. The optimal policy, defined by a mapping from states to control actions, dictates that the robot should maintain its distance from the wall at each time step without deviating from its forward trajectory or encountering obstacles.
 
+To simplify the learning problem and focus on algorithm development, we employ a single static environment during training. This environment provides a controlled setting for the robot to learn navigation behaviors without the complexities introduced by stochastic elements. By isolating the navigation task to a fixed environment, we can systematically explore and evaluate reinforcement learning algorithms to teach the robot effective wall-following behavior.
 
-### Design Parameters
+<div style="text-align:center;">
+  <img src="misc/images/envImage.png" alt="drawing" width="50%"/>
+</div>
 
-#### States/ Actions
+## TurtleBot 3 Waffle Pi Overview
 
-States are defined by the the tuple:
+The project utilizes the TurtleBot 3 Waffle Pi model within the Gazebo simulation environment. The TurtleBot 3 is a widely used and versatile mobile robot platform, known for its compact size and agility.
 
-        state <-- (right status , front status , left status , right diagonal status)
+<div style="text-align:center;">
+    <img src="misc/images/turtlebot.png" alt="TurtleBot 3 Waffle Pi Image" width="30%">
+</div>
 
-        where the status of each direction is informed by the minimum lidar distance
-        over some interval [a,b]deg.
-        The observation for each direction is found by the key,
+## Specifications
 
-            right <-- [245 , 355]deg
-            front <-- [-30 , 30]deg
-            left <-- [55 , 125]deg
-            right diagonal <-- [265 , 359]deg
-        
-        After which, the minimum distance reading in each direction is discretized into
-        a finite set by the thresholds
+- **Dimensions:** The TurtleBot 3 is compact and agile, with dimensions suitable for navigating through various indoor environments.
+- **Sensor Suite:** Equipped with a range of sensors including a LiDAR sensor for mapping and navigation, and a camera for visual perception.
+- **Control System:** Utilizes a ROS (Robot Operating System) based control system, allowing for seamless integration with other ROS-based software packages.
+- **Drive System:** The robot features differential drive for precise maneuverability and control.
+- **Payload Capacity:** Capable of carrying additional payloads for various applications such as sensor modules or manipulators.
 
-            -------------------------------------------------------
-            right status <-- 'close' :          (0 , 0.35), 
-                             'tilted close' :   (0.35 , 0.9*d_w), 
-                             'good' :           (0.9*d_w , 1.1*d_w), 
-                             'tilted far' :     (1.1*d_w , 1.5*d_w), 
-                             'far' :            (1.5*d_w , 20)
-            -------------------------------------------------------
-            front status <-- 'front' : {'close' : (0 , 0.5) , 
-                            'medium' : (0.5 , 0.75) , 
-                            'far' : (0.75 , 20)
-            -------------------------------------------------------
-            left status  <-- 'left' : {'close' : (0,0.6), 
-                             'far' : (0.6,20) 
-            -------------------------------------------------------
-            orientation_forward Status  <-- 'close' : (0,0.85) , 
-                                            'far' : (0.85,20)
-            -------------------------------------------------------
-        
-        A single state is some combination of each of the directional status's.
-        And so there are 
+## Design Parameters
 
-            |S| = 5 X 3 X 2 X 2 = 60 states
+## States
 
-<img src="misc/images/stateSpaceImage.png" alt="drawing" width="50%"/>
+States represent the current situation or configuration of the environment as perceived by the agent's sensors. In this project, states are defined by the tuples containing information about the distances measured by LiDAR sensors in different directions relative to the robot's position. These states provide essential context for the agent to make decisions about its next action.
 
-        The action space A is a set of control inputs that affect the
-        velocity of the robot. The RL model is tasked with selecting
-        a single action from the action space for each state. And
-        correspondingly, the controller can only adjust the velocity
-        of the robot if the state changes.
+States are defined as tuples consisting of four components, representing the status of each direction perceived by the LiDAR sensor:
 
-        Each state points to a single action in the action space.
+```
+state <-- (right status, front status, left status, right diagonal status)
+```
 
-            A = 'straight'
-                'slight left'
-                'hard left'
-                'slight right'
-                'hard right'
-        Each of which publishes a corresponding velocity to the robot.
+Each direction's status is determined by the minimum LiDAR distance observed over specific angular intervals. The observation ranges for each direction are defined as follows:
+
+| Direction       | Range       |
+|-----------------|-------------|
+| Right           | [245, 355]  |
+| Front           | [-30, 30]   |
+| Left            | [55, 125]   |
+| Right Diagonal  | [265, 359]  |
 
 
-#### Rewards
+These ranges help capture the immediate surroundings of the robot from various perspectives.
 
-both an intrinsic and
-extrinsic reward is used to reward the robot for maintaining
-a distance dw on its right from the wall, and punish it for
-preforming actions that are risky or may make the robot
-difficult to control in a real world setting. The extrinsic reward
-uses the literal distance, d, from the robots right side to the
-wall as input to the graduated reward function.
+The minimum distance reading in each direction is then discretized into a finite set based on predefined thresholds:
 
-And the intrinsic reward, slightly punishes the use of risky
-actions, for example, turning too quickly.
-
-This is designed to promote the use of manageable turning
-speeds in cases where they are acceptable, while still allowing
-the algorithm to pick greater angular speeds if necessary to
-prevent crashing.
+| Right Status | Front Status | Left Status | Righ Diagonal |
+|--------------|--------------|-------------|---------------|
+|close [0, 0.35]|close [0, 0.5]|close [0, 0.6]|close [0, 0.85]|
+|tilted close [0.35, 0.9 * d_w]|medium [0.5, 0.75]|far [0.6, 20]|far [0.85, 20]|
+|good [0.9 * d_w, 1.1 * d_w]|far [0.75, 20]| | |
+|tilted far [1.1 * d_w, 1.5 * d_w]| | | |
+|far 1.5 * d_w, 20]| | | |
 
 
-### Evaluation of Success
 
-Success is evaluated by two metrics, being the learning
-convergence rate and accuracy. The convergence rate and accu-
-racy are informed by selecting a few states with known ’best’
-actions and comparing the ratio of steps where the algorithm
-encounters a known state and also greedily selects the correct
-action against the number of epocs. Faster convergence speed
-indicates that the learning strategy is capable of learning an
-’acceptable’ behavior with fewer training cycles. While, a
-greater accuracy informs the quality of the policy each learning
-strategy is capable of finding.
+<div style="text-align:center;">
+    <img src="misc/images/stateSpaceImage.png" alt="drawing" width="50%"/>
+</div>
+
+
+A single state is some combination of each of the directional status's.
+And so there are
+
+    |S| = 5 X 3 X 2 X 2 = 60 states
+
+
+
+## Actions
+
+In the reinforcement learning framework, the action space \( A \) comprises a set of control inputs that dictate the velocity of the robot. Each state in the environment corresponds to a single action from this action space. The robot's controller adjusts its velocity based on the selected action, enabling it to navigate the environment effectively.
+
+### Available Actions
+
+The following actions are available in the action space:
+
+- **Straight**: This action instructs the robot to continue moving forward without any angular adjustments. It maintains the current heading of the robot.
+  
+- **Slight Left**: The robot executes a slight left turn, adjusting its trajectory to the left while maintaining forward motion. This action is useful for navigating gentle curves in the environment.
+
+- **Hard Left**: With this action, the robot executes a more pronounced left turn, deviating significantly from its current heading to navigate sharper turns or obstacles on the left side.
+
+- **Slight Right**: Similar to the slight left action, this command instructs the robot to execute a gentle right turn while continuing to move forward.
+
+- **Hard Right**: The robot executes a substantial right turn, deviating significantly to the right from its current trajectory. This action is useful for navigating obstacles or sharp turns on the right side.
+
+### Velocity Adjustment
+
+Each action in the action space corresponds to a specific velocity profile, determining the speed and direction of the robot's movement. The controller translates the selected action into appropriate velocity commands, ensuring smooth and responsive navigation in the environment.
+
+By selecting an appropriate action for each state, the reinforcement learning model guides the robot towards achieving its objectives while navigating safely and efficiently.
+
+## Rewards
+
+In the reinforcement learning framework employed for this project, both intrinsic and extrinsic rewards are utilized to guide the learning process of the autonomous robot. These rewards are tailored to encourage behaviors that facilitate safe and efficient navigation within the simulated environment.
+
+### Extrinsic Reward
+
+The extrinsic reward mechanism is based on the literal distance, \( d \), between the robot and the wall on its right side, denoted as \( d_w \). This reward system aims to incentivize the robot to maintain a fixed distance \( d_w \) from the wall, promoting smooth wall-following behavior. The extrinsic reward function employs a graduated approach, providing higher rewards for maintaining the desired distance and imposing penalties for deviating from it.
+
+### Intrinsic Reward
+
+Complementing the extrinsic reward, the intrinsic reward mechanism serves to discourage the adoption of risky actions by the robot. For instance, excessively rapid turns are penalized to deter erratic behavior that could lead to collisions or instability. By incorporating intrinsic rewards, the reinforcement learning algorithm learns to prioritize actions that strike a balance between efficiency and safety, fostering robust navigation strategies.
+
+The combined use of intrinsic and extrinsic rewards creates a reinforcement signal that guides the robot's decision-making process, encouraging behaviors conducive to effective navigation while mitigating potential risks. This approach ensures that the autonomous agent learns to navigate the environment skillfully, adaptively adjusting its actions to achieve the desired objectives while maintaining safety and stability.
+
+## Evaluation of Success
+
+The success of the reinforcement learning algorithm is evaluated based on two key metrics: learning convergence rate and accuracy. These metrics offer insights into the effectiveness and efficiency of the learning process, shedding light on the algorithm's ability to acquire and generalize knowledge from the training environment.
+
+### Learning Convergence Rate
+
+The learning convergence rate measures the speed at which the algorithm converges to an acceptable policy. This is determined by analyzing the ratio of steps where the algorithm encounters a known state and selects the correct action, compared to the total number of epochs. A faster convergence speed indicates that the learning strategy is capable of acquiring satisfactory behaviors with fewer training cycles, demonstrating efficiency in learning from the environment.
+
+### Accuracy
+
+Accuracy refers to the quality of the learned policy produced by the reinforcement learning algorithm. It is assessed by selecting a subset of states with known 'best' actions and evaluating the algorithm's ability to consistently choose the correct actions in these states. A higher accuracy indicates that the learning strategy is capable of discovering a high-quality policy that aligns well with the desired behavior. 
+
+By analyzing both the learning convergence rate and accuracy, the effectiveness and quality of the learned policy can be comprehensively evaluated, providing valuable insights into the performance and capabilities of the reinforcement learning algorithm.
+
 
 ## Table Of Contents
 
